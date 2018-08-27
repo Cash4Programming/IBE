@@ -1,4 +1,4 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/jencknet/public_html/MySchoolTools/IBE
+    - export DEPLOYPATH=/home/jencknet/public_html/MySchoolTools/IBEWeb
