@@ -1,4 +1,8 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/jencknet/public_html/MySchoolTools/IBEWeb
+    - export GITSOURCE=/home/jencknet/public_html/MySchoolTools/IBE
+    - export ZIPDEPLOYPATH=/home/jencknet/public_html/MySchoolTools
+    - zip -r $ZIPDEPLOYPATH/IBESource.zip $GITSOURCE 
+
+#  https://documentation.cpanel.net/display/CKB/Guide+to+Git+-+Deployment
