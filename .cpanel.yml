@@ -3,6 +3,7 @@ deployment:
   tasks:
     - export GITSOURCE=/home/jencknet/public_html/MySchoolTools/IBE
     - export ZIPDEPLOYPATH=/home/jencknet/public_html/MySchoolTools
-    - zip -r -j $ZIPDEPLOYPATH/IBESource.zip $GITSOURCE 
+    - cd $GITSOURCE
+    - zip -r $ZIPDEPLOYPATH/IBESource.zip ./*
 
 #  https://documentation.cpanel.net/display/CKB/Guide+to+Git+-+Deployment
