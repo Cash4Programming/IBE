@@ -1,0 +1,291 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{22EF30DA-85D0-454C-A9D5-02CC9D97A052}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>InstructorBriefcaseExtractor</RootNamespace>
+    <AssemblyName>InstructorBriefcaseExtractor</AssemblyName>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>IBE_Key.snk</AssemblyOriginatorKeyFile>
+    <SignManifests>true</SignManifests>
+    <ManifestCertificateThumbprint>E1C3BEF6DA56F9F890B3B53917644FE513C307D9</ManifestCertificateThumbprint>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <GenerateManifests>true</GenerateManifests>
+    <StartupObject>InstructorBriefcaseExtractor.Program</StartupObject>
+    <ApplicationIcon>IBC.ico</ApplicationIcon>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+    <PublishUrl>ftp://ftp.jenck.net/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>true</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <InstallUrl>https://jenck.net/MySchoolTools/</InstallUrl>
+    <ProductName>Instructor Briefcase Extractor</ProductName>
+    <PublisherName>My School Tools</PublisherName>
+    <MinimumRequiredVersion>2.3.3.6</MinimumRequiredVersion>
+    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
+    <WebPage>index.html</WebPage>
+    <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
+    <ApplicationRevision>6</ApplicationRevision>
+    <ApplicationVersion>2.3.3.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <CodeAnalysisIgnoreGeneratedCode>false</CodeAnalysisIgnoreGeneratedCode>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>
+    </CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <CodeAnalysisRuleSet>
+    </CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>YVCCCert.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Outlook, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.Office.Interop.Outlook.15.0.4797.1003\lib\net20\Microsoft.Office.Interop.Outlook.dll</HintPath>
+    </Reference>
+    <Reference Include="stdole, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>7</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BLL\Clicker.cs" />
+    <Compile Include="BLL\ClickerConfiguration.cs" />
+    <Compile Include="BLL\Excel.cs" />
+    <Compile Include="BLL\ExcelClassConfiguration.cs" />
+    <Compile Include="BLL\ExcelRollConfiguration.cs" />
+    <Compile Include="BLL\MTG.cs" />
+    <Compile Include="BLL\MTGConfiguration.cs" />
+    <Compile Include="BLL\Outlook.cs" />
+    <Compile Include="BLL\OutlookConfiguration.cs" />
+    <Compile Include="BLL\Quarter2MonthConfiguration.cs" />
+    <Compile Include="BLL\UserConfiguration.cs" />
+    <Compile Include="BLL\Wamap.cs" />
+    <Compile Include="BLL\WamapConfiguration.cs" />
+    <Compile Include="BLL\WebAssign.cs" />
+    <Compile Include="BLL\WebAssignConfiguration.cs" />
+    <Compile Include="BLL\Wizard.cs" />
+    <Compile Include="BLL\XMLFileVersionConfiguration.cs" />
+    <Compile Include="Controls\Constants.cs" />
+    <Compile Include="Controls\Grouper.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DAL\CISAction.cs" />
+    <Compile Include="DAL\College.cs" />
+    <Compile Include="DAL\Colleges.cs" />
+    <Compile Include="DAL\GRC.cs" />
+    <Compile Include="DAL\YVC.cs" />
+    <Compile Include="Model\ClickerSettings.cs" />
+    <Compile Include="Model\Courses.cs" />
+    <Compile Include="Model\Events.cs" />
+    <Compile Include="Model\ExcelClassSettings.cs" />
+    <Compile Include="Model\ExcelLinks.cs" />
+    <Compile Include="Model\ExcelRollSettings.cs" />
+    <Compile Include="Model\ClassNameAndItemNumber.cs" />
+    <Compile Include="Model\ClassNameAndItemNumbers.cs" />
+    <Compile Include="Model\ExcelLink.cs" />
+    <Compile Include="Model\MyDirectory.cs" />
+    <Compile Include="Model\GenericSettings.cs" />
+    <Compile Include="Model\GenericSettingsCollection.cs" />
+    <Compile Include="Model\MTGSettings.cs" />
+    <Compile Include="Model\OptionHeaders.cs" />
+    <Compile Include="Model\OutlookSettings.cs" />
+    <Compile Include="Model\Quarter.cs" />
+    <Compile Include="Model\Quarter2MonthSettings.cs" />
+    <Compile Include="Model\UserSettings.cs" />
+    <Compile Include="Model\WamapSettings.cs" />
+    <Compile Include="Model\WebAssignSettings.cs" />
+    <Compile Include="Options.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Options.Designer.cs">
+      <DependentUpon>Options.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utility\Mail.cs" />
+    <Compile Include="Utility\XMLhelper.cs" />
+    <Compile Include="DAL\CISWebRequest.cs" />
+    <Compile Include="Extractor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Extractor.Designer.cs">
+      <DependentUpon>Extractor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FileExistsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FileExistsDialog.Designer.cs">
+      <DependentUpon>FileExistsDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CISCourse.cs" />
+    <Compile Include="Model\Course.cs" />
+    <Compile Include="Model\CISLogin.cs" />
+    <Compile Include="Model\Quarters.cs" />
+    <Compile Include="Model\Student.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Controls\Grouper.resx" />
+    <EmbeddedResource Include="Options.resx">
+      <DependentUpon>Options.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Extractor.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Extractor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FileExistsDialog.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FileExistsDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="app.config" />
+    <None Include="IBE_Key.snk" />
+    <None Include="MyCert.pfx" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Templates\GradeBook_Template_Percent.xls">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\GradeBook_Template_Points.xls">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Settings.cs" />
+    <Compile Include="Utility\Crypto.cs" />
+    <Compile Include="Utility\ExtractValue.cs" />
+    <Content Include="Templates\Gradebook_Group_Template_Percent.xls">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="YVCCCert.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="IBC.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <PublishFile Include="stdole">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
