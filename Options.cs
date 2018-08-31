@@ -511,7 +511,9 @@ namespace InstructorBriefcaseExtractor
 
         private void LLEmail_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("mailto:mpjenck@gmail.com?subject=Instructor%20Briefcase%20Extractor&body=Hi%20Mike,%0D%0A%0D%0AA%20quick%20note");
+            string body = "Hi%20Mike,%0D%0A%0D%0AMy%20college%20information%20is%20as%20follows:%0D%0A%0D%0ACollege%20Full%20Name:%0D%0A%0D%0ACollege%20Abbreviation%0D%0A%0D%0AEmployeeID%20prompt%0D%0A%0D%0AWebAssign%20Institution%20code%0D%0A%0D%0AInstructor%20Briefcase%20RequestURL:%0D%0A%0D%0AThanks,%0D%0A%0D%0A(Your%20Name%20Here)";
+
+            System.Diagnostics.Process.Start("mailto:mpjenck@gmail.com?subject=Instructor%20Briefcase%20Extractor%20-%20My%20College%20is%20missing&body="+body);
         }
 
     }

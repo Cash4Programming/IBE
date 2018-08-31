@@ -398,10 +398,10 @@
             this.LLEmail.AutoSize = true;
             this.LLEmail.Location = new System.Drawing.Point(22, 182);
             this.LLEmail.Name = "LLEmail";
-            this.LLEmail.Size = new System.Drawing.Size(50, 13);
+            this.LLEmail.Size = new System.Drawing.Size(107, 13);
             this.LLEmail.TabIndex = 8;
             this.LLEmail.TabStop = true;
-            this.LLEmail.Text = "Email Me";
+            this.LLEmail.Text = "My College is Missing";
             this.LLEmail.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LLEmail_LinkClicked);
             // 
             // LblRequestURLvalue
