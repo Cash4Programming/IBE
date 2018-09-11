@@ -229,6 +229,7 @@ namespace InstructorBriefcaseExtractor
             #endregion
 
             #region Outlook
+            TxtOutlookUserEmail.Text = UserSettings.Email;
             ChkOutlookUnderscore.Checked = MTGSettings.Underscore;
             ChkOutlookUnderscore.Checked = MTGSettings.Export;
             #endregion
