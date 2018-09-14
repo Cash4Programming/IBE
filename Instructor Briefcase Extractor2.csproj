@@ -214,12 +214,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Content Include="Templates\GradeBook_Template_Percent.xls">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Templates\GradeBook_Template_Points.xls">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -228,7 +222,10 @@
     <Compile Include="Settings.cs" />
     <Compile Include="Utility\Crypto.cs" />
     <Compile Include="Utility\ExtractValue.cs" />
-    <Content Include="Templates\Gradebook_Group_Template_Percent.xls">
+    <Content Include="Templates\Gradebook_Group_33_Template_Percent.xls">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Gradebook_Group_36_Template_Percent.xls">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="YVCCCert.pfx" />

@@ -16,7 +16,7 @@ namespace InstructorBriefcaseExtractor
         // 510 x 410 - default size
         private int smallheight = 425;
         private int bigheight = 656;
-        private int defaultwidth = 510;
+        private int defaultwidth = 544;
         // 
 
         private Wizard myWizard;
@@ -540,6 +540,5 @@ namespace InstructorBriefcaseExtractor
             myWizard.WriteToXML();
             myWizard.Email_Usage();            
         }
-        
     }
 }
