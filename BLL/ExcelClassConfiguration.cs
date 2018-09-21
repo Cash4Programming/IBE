@@ -11,6 +11,7 @@ namespace InstructorBriefcaseExtractor.BLL
         private readonly string xmlEXCELNodeNameLocation = "EXCEL";
 
         private readonly string ExportKey = "Export";
+        private readonly string ExportWaitListKey = "ExportWaitList";
         private readonly string ExportMiddleInitialKey = "ExportMI";
         private readonly string ExportSIDKey = "ExportSID";
         private readonly string ExportSIDLast4Key = "ExportSIDLast4";
@@ -37,6 +38,7 @@ namespace InstructorBriefcaseExtractor.BLL
         public static readonly string OptHead1NameDefault = "OptHead1";
         public static readonly string OptHead2NameDefault = "OptHead2";
         public static readonly string OptHead3NameDefault = "OptHead3";
+        public static readonly string OptHeadWaitlistNameDefault = "OptHeadWaitList";
         public static readonly string SaveAsFileNameDafault = "Grades.xls";
         public static readonly string TemplateFileNameDafault = "GradeBook_Template_Percent.xls";
         public static readonly string FirstNameColumnLetterDefault = "E";
@@ -90,6 +92,16 @@ namespace InstructorBriefcaseExtractor.BLL
             {
                 ExcelClassSettings.Export = false;
                 XML.XMLWriteFile(xmlEXCELNodeNameLocation, ExportKey, ExcelClassSettings.Export.ToString());
+            }
+
+            try
+            {
+                ExcelClassSettings.ExportWaitlist = Convert.ToBoolean(XML.XMLReadFile(xmlEXCELNodeNameLocation, ExportWaitListKey).ToLower());
+            }
+            catch
+            {
+                ExcelClassSettings.ExportWaitlist = false;
+                XML.XMLWriteFile(xmlEXCELNodeNameLocation, ExportWaitListKey, ExcelClassSettings.ExportWaitlist.ToString());
             }
 
             try
@@ -173,8 +185,6 @@ namespace InstructorBriefcaseExtractor.BLL
                 XML.XMLWriteFile(xmlEXCELNodeNameLocation, OptHead1ColumnLetterKey, ExcelClassSettings.OptHead1ColumnLetter);
             }
 
-            
-
             ExcelClassSettings.OptHead2ColumnLetter = XML.XMLReadFile(xmlEXCELNodeNameLocation, OptHead2ColumnLetterKey);
             if (ExcelClassSettings.OptHead2ColumnLetter == "")
             {
@@ -211,6 +221,12 @@ namespace InstructorBriefcaseExtractor.BLL
             {
                 ExcelClassSettings.HeaderNames.Header3 = OptionHeaders.HeaderDefault;
                 XML.XMLWriteFile(xmlEXCELNodeNameLocation, OptHead3NameDefault, ExcelClassSettings.HeaderNames.Header3);
+            }
+            ExcelClassSettings.HeaderNames.WaitListHeader = XML.XMLReadFile(xmlEXCELNodeNameLocation, OptHeadWaitlistNameDefault);
+            if (ExcelClassSettings.HeaderNames.WaitListHeader == "")
+            {
+                ExcelClassSettings.HeaderNames.WaitListHeader = OptionHeaders.HeaderDefault;
+                XML.XMLWriteFile(xmlEXCELNodeNameLocation, OptHeadWaitlistNameDefault, ExcelClassSettings.HeaderNames.WaitListHeader);
             }
             #endregion
 
@@ -299,6 +315,7 @@ namespace InstructorBriefcaseExtractor.BLL
             XMLhelper XML = new XMLhelper(UserSettings);
 
             XML.XMLWriteFile(xmlEXCELNodeNameLocation, ExportKey, ExcelClassSettings.Export.ToString());
+            XML.XMLWriteFile(xmlEXCELNodeNameLocation, ExportWaitListKey, ExcelClassSettings.ExportWaitlist.ToString());
             XML.XMLWriteFile(xmlEXCELNodeNameLocation, ExportMiddleInitialKey, ExcelClassSettings.ExportMiddleInitial.ToString());
             XML.XMLWriteFile(xmlEXCELNodeNameLocation, ExportSIDKey, ExcelClassSettings.ExportSID.ToString());
             XML.XMLWriteFile(xmlEXCELNodeNameLocation, ExportSIDLast4Key, ExcelClassSettings.ExportSIDLast4.ToString());
@@ -312,6 +329,7 @@ namespace InstructorBriefcaseExtractor.BLL
             XML.XMLWriteFile(xmlEXCELNodeNameLocation, OptHead1ColumnLetterKey, ExcelClassSettings.OptHead1ColumnLetter);
             XML.XMLWriteFile(xmlEXCELNodeNameLocation, OptHead2ColumnLetterKey, ExcelClassSettings.OptHead2ColumnLetter);
             XML.XMLWriteFile(xmlEXCELNodeNameLocation, OptHead3ColumnLetterKey, ExcelClassSettings.OptHead3ColumnLetter);
+            XML.XMLWriteFile(xmlEXCELNodeNameLocation, OptHeadWaitlistNameDefault, ExcelClassSettings.HeaderNames.WaitListHeader);
 
             XML.XMLWriteFile(xmlEXCELNodeNameLocation, OptHead1NameDefault, ExcelClassSettings.HeaderNames.Header1);
             XML.XMLWriteFile(xmlEXCELNodeNameLocation, OptHead2NameDefault, ExcelClassSettings.HeaderNames.Header2);

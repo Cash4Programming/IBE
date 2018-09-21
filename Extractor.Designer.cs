@@ -69,6 +69,8 @@ namespace InstructorBriefcaseExtractor
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ConfigurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.CbkExcelRollWaitListExport = new System.Windows.Forms.CheckBox();
+            this.CbkExcelClassWaitListExport = new System.Windows.Forms.CheckBox();
             this.PanelCourseRetrieved.SuspendLayout();
             this.GB3Wamap.SuspendLayout();
             this.GB3Clicker.SuspendLayout();
@@ -83,7 +85,7 @@ namespace InstructorBriefcaseExtractor
             // 
             // BtnMoreLess
             // 
-            this.BtnMoreLess.Location = new System.Drawing.Point(406, 356);
+            this.BtnMoreLess.Location = new System.Drawing.Point(406, 385);
             this.BtnMoreLess.Name = "BtnMoreLess";
             this.BtnMoreLess.Size = new System.Drawing.Size(80, 24);
             this.BtnMoreLess.TabIndex = 25;
@@ -92,7 +94,7 @@ namespace InstructorBriefcaseExtractor
             // 
             // BtnBack
             // 
-            this.BtnBack.Location = new System.Drawing.Point(214, 324);
+            this.BtnBack.Location = new System.Drawing.Point(214, 353);
             this.BtnBack.Name = "BtnBack";
             this.BtnBack.Size = new System.Drawing.Size(80, 24);
             this.BtnBack.TabIndex = 24;
@@ -101,7 +103,7 @@ namespace InstructorBriefcaseExtractor
             // 
             // BtnNext
             // 
-            this.BtnNext.Location = new System.Drawing.Point(310, 324);
+            this.BtnNext.Location = new System.Drawing.Point(310, 353);
             this.BtnNext.Name = "BtnNext";
             this.BtnNext.Size = new System.Drawing.Size(80, 24);
             this.BtnNext.TabIndex = 23;
@@ -110,7 +112,7 @@ namespace InstructorBriefcaseExtractor
             // 
             // RtbHTML
             // 
-            this.RtbHTML.Location = new System.Drawing.Point(12, 397);
+            this.RtbHTML.Location = new System.Drawing.Point(12, 426);
             this.RtbHTML.Name = "RtbHTML";
             this.RtbHTML.Size = new System.Drawing.Size(480, 211);
             this.RtbHTML.TabIndex = 22;
@@ -119,7 +121,7 @@ namespace InstructorBriefcaseExtractor
             // BtnCancel
             // 
             this.BtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.BtnCancel.Location = new System.Drawing.Point(406, 324);
+            this.BtnCancel.Location = new System.Drawing.Point(406, 353);
             this.BtnCancel.Name = "BtnCancel";
             this.BtnCancel.Size = new System.Drawing.Size(80, 24);
             this.BtnCancel.TabIndex = 21;
@@ -139,15 +141,15 @@ namespace InstructorBriefcaseExtractor
             this.PanelCourseRetrieved.Controls.Add(this.LblCourses);
             this.PanelCourseRetrieved.Location = new System.Drawing.Point(10, 25);
             this.PanelCourseRetrieved.Name = "PanelCourseRetrieved";
-            this.PanelCourseRetrieved.Size = new System.Drawing.Size(513, 293);
+            this.PanelCourseRetrieved.Size = new System.Drawing.Size(522, 322);
             this.PanelCourseRetrieved.TabIndex = 27;
             // 
             // GB3Wamap
             // 
             this.GB3Wamap.Controls.Add(this.CbkWamapExport);
-            this.GB3Wamap.Location = new System.Drawing.Point(212, 53);
+            this.GB3Wamap.Location = new System.Drawing.Point(212, 55);
             this.GB3Wamap.Name = "GB3Wamap";
-            this.GB3Wamap.Size = new System.Drawing.Size(150, 40);
+            this.GB3Wamap.Size = new System.Drawing.Size(150, 50);
             this.GB3Wamap.TabIndex = 9;
             this.GB3Wamap.TabStop = false;
             this.GB3Wamap.Text = "WAMAP";
@@ -156,7 +158,7 @@ namespace InstructorBriefcaseExtractor
             // 
             this.CbkWamapExport.Location = new System.Drawing.Point(8, 16);
             this.CbkWamapExport.Name = "CbkWamapExport";
-            this.CbkWamapExport.Size = new System.Drawing.Size(66, 16);
+            this.CbkWamapExport.Size = new System.Drawing.Size(91, 28);
             this.CbkWamapExport.TabIndex = 1;
             this.CbkWamapExport.Text = "Export";
             this.CbkWamapExport.CheckedChanged += new System.EventHandler(this.CbkWamapExport_CheckedChanged);
@@ -166,7 +168,7 @@ namespace InstructorBriefcaseExtractor
             this.GB3Clicker.Controls.Add(this.CbkClickerExport);
             this.GB3Clicker.Location = new System.Drawing.Point(212, 7);
             this.GB3Clicker.Name = "GB3Clicker";
-            this.GB3Clicker.Size = new System.Drawing.Size(150, 40);
+            this.GB3Clicker.Size = new System.Drawing.Size(150, 52);
             this.GB3Clicker.TabIndex = 10;
             this.GB3Clicker.TabStop = false;
             this.GB3Clicker.Text = "Clicker";
@@ -175,7 +177,7 @@ namespace InstructorBriefcaseExtractor
             // 
             this.CbkClickerExport.Location = new System.Drawing.Point(8, 16);
             this.CbkClickerExport.Name = "CbkClickerExport";
-            this.CbkClickerExport.Size = new System.Drawing.Size(66, 16);
+            this.CbkClickerExport.Size = new System.Drawing.Size(91, 30);
             this.CbkClickerExport.TabIndex = 1;
             this.CbkClickerExport.Text = "Export";
             this.CbkClickerExport.CheckedChanged += new System.EventHandler(this.CbkClickerExport_CheckedChanged);
@@ -183,9 +185,9 @@ namespace InstructorBriefcaseExtractor
             // ChkOverWrite
             // 
             this.ChkOverWrite.AutoSize = true;
-            this.ChkOverWrite.Location = new System.Drawing.Point(212, 273);
+            this.ChkOverWrite.Location = new System.Drawing.Point(212, 289);
             this.ChkOverWrite.Name = "ChkOverWrite";
-            this.ChkOverWrite.Size = new System.Drawing.Size(196, 17);
+            this.ChkOverWrite.Size = new System.Drawing.Size(255, 21);
             this.ChkOverWrite.TabIndex = 9;
             this.ChkOverWrite.Text = "Replace existing files without asking";
             this.ChkOverWrite.UseVisualStyleBackColor = true;
@@ -193,9 +195,9 @@ namespace InstructorBriefcaseExtractor
             // GB3WebAssign
             // 
             this.GB3WebAssign.Controls.Add(this.CbkWebAssignExport);
-            this.GB3WebAssign.Location = new System.Drawing.Point(370, 109);
+            this.GB3WebAssign.Location = new System.Drawing.Point(215, 113);
             this.GB3WebAssign.Name = "GB3WebAssign";
-            this.GB3WebAssign.Size = new System.Drawing.Size(127, 40);
+            this.GB3WebAssign.Size = new System.Drawing.Size(127, 55);
             this.GB3WebAssign.TabIndex = 8;
             this.GB3WebAssign.TabStop = false;
             this.GB3WebAssign.Text = "WebAssign";
@@ -204,7 +206,7 @@ namespace InstructorBriefcaseExtractor
             // 
             this.CbkWebAssignExport.Location = new System.Drawing.Point(8, 16);
             this.CbkWebAssignExport.Name = "CbkWebAssignExport";
-            this.CbkWebAssignExport.Size = new System.Drawing.Size(66, 16);
+            this.CbkWebAssignExport.Size = new System.Drawing.Size(90, 29);
             this.CbkWebAssignExport.TabIndex = 1;
             this.CbkWebAssignExport.Text = "Export";
             this.CbkWebAssignExport.CheckedChanged += new System.EventHandler(this.CbkWebAssignExport_CheckedChanged);
@@ -214,7 +216,7 @@ namespace InstructorBriefcaseExtractor
             this.GB3Outlook.Controls.Add(this.CbkOutlookExport);
             this.GB3Outlook.Location = new System.Drawing.Point(368, 9);
             this.GB3Outlook.Name = "GB3Outlook";
-            this.GB3Outlook.Size = new System.Drawing.Size(127, 40);
+            this.GB3Outlook.Size = new System.Drawing.Size(127, 56);
             this.GB3Outlook.TabIndex = 6;
             this.GB3Outlook.TabStop = false;
             this.GB3Outlook.Text = "Outlook";
@@ -223,36 +225,38 @@ namespace InstructorBriefcaseExtractor
             // 
             this.CbkOutlookExport.Location = new System.Drawing.Point(8, 18);
             this.CbkOutlookExport.Name = "CbkOutlookExport";
-            this.CbkOutlookExport.Size = new System.Drawing.Size(66, 16);
+            this.CbkOutlookExport.Size = new System.Drawing.Size(91, 32);
             this.CbkOutlookExport.TabIndex = 1;
             this.CbkOutlookExport.Text = "Export";
             this.CbkOutlookExport.CheckedChanged += new System.EventHandler(this.CbkOutlookExport_CheckedChanged);
             // 
             // GB3Excel
             // 
+            this.GB3Excel.Controls.Add(this.CbkExcelClassWaitListExport);
+            this.GB3Excel.Controls.Add(this.CbkExcelRollWaitListExport);
             this.GB3Excel.Controls.Add(this.CbkExcelLabExport);
             this.GB3Excel.Controls.Add(this.CbkExcelRollExport);
             this.GB3Excel.Controls.Add(this.CbkExcelClassExport);
-            this.GB3Excel.Location = new System.Drawing.Point(212, 99);
+            this.GB3Excel.Location = new System.Drawing.Point(223, 167);
             this.GB3Excel.Name = "GB3Excel";
-            this.GB3Excel.Size = new System.Drawing.Size(150, 95);
+            this.GB3Excel.Size = new System.Drawing.Size(274, 116);
             this.GB3Excel.TabIndex = 5;
             this.GB3Excel.TabStop = false;
             this.GB3Excel.Text = "Excel";
             // 
             // CbkExcelLabExport
             // 
-            this.CbkExcelLabExport.Location = new System.Drawing.Point(6, 64);
+            this.CbkExcelLabExport.Location = new System.Drawing.Point(8, 79);
             this.CbkExcelLabExport.Name = "CbkExcelLabExport";
-            this.CbkExcelLabExport.Size = new System.Drawing.Size(82, 16);
+            this.CbkExcelLabExport.Size = new System.Drawing.Size(130, 24);
             this.CbkExcelLabExport.TabIndex = 3;
             this.CbkExcelLabExport.Text = "Export Lab";
             // 
             // CbkExcelRollExport
             // 
-            this.CbkExcelRollExport.Location = new System.Drawing.Point(8, 37);
+            this.CbkExcelRollExport.Location = new System.Drawing.Point(8, 48);
             this.CbkExcelRollExport.Name = "CbkExcelRollExport";
-            this.CbkExcelRollExport.Size = new System.Drawing.Size(82, 16);
+            this.CbkExcelRollExport.Size = new System.Drawing.Size(128, 23);
             this.CbkExcelRollExport.TabIndex = 2;
             this.CbkExcelRollExport.Text = "Export Roll";
             // 
@@ -260,7 +264,7 @@ namespace InstructorBriefcaseExtractor
             // 
             this.CbkExcelClassExport.Location = new System.Drawing.Point(8, 16);
             this.CbkExcelClassExport.Name = "CbkExcelClassExport";
-            this.CbkExcelClassExport.Size = new System.Drawing.Size(86, 16);
+            this.CbkExcelClassExport.Size = new System.Drawing.Size(128, 26);
             this.CbkExcelClassExport.TabIndex = 1;
             this.CbkExcelClassExport.Text = "Export Class";
             this.CbkExcelClassExport.CheckedChanged += new System.EventHandler(this.CbkExcelClassExport_CheckedChanged);
@@ -268,9 +272,9 @@ namespace InstructorBriefcaseExtractor
             // GB3MTG
             // 
             this.GB3MTG.Controls.Add(this.CbkMTGExport);
-            this.GB3MTG.Location = new System.Drawing.Point(370, 55);
+            this.GB3MTG.Location = new System.Drawing.Point(370, 63);
             this.GB3MTG.Name = "GB3MTG";
-            this.GB3MTG.Size = new System.Drawing.Size(127, 40);
+            this.GB3MTG.Size = new System.Drawing.Size(127, 50);
             this.GB3MTG.TabIndex = 4;
             this.GB3MTG.TabStop = false;
             this.GB3MTG.Text = "MTG";
@@ -279,7 +283,7 @@ namespace InstructorBriefcaseExtractor
             // 
             this.CbkMTGExport.Location = new System.Drawing.Point(8, 16);
             this.CbkMTGExport.Name = "CbkMTGExport";
-            this.CbkMTGExport.Size = new System.Drawing.Size(66, 16);
+            this.CbkMTGExport.Size = new System.Drawing.Size(89, 28);
             this.CbkMTGExport.TabIndex = 1;
             this.CbkMTGExport.Text = "Export";
             this.CbkMTGExport.CheckedChanged += new System.EventHandler(this.CbkMTGExport_CheckedChanged);
@@ -288,7 +292,7 @@ namespace InstructorBriefcaseExtractor
             // 
             this.ClbCourses.Location = new System.Drawing.Point(8, 32);
             this.ClbCourses.Name = "ClbCourses";
-            this.ClbCourses.Size = new System.Drawing.Size(196, 244);
+            this.ClbCourses.Size = new System.Drawing.Size(196, 276);
             this.ClbCourses.TabIndex = 3;
             this.ClbCourses.SelectedIndexChanged += new System.EventHandler(this.ClbCourses_SelectedIndexChanged);
             // 
@@ -328,7 +332,7 @@ namespace InstructorBriefcaseExtractor
             this.CmbQuarterName.Location = new System.Drawing.Point(245, 140);
             this.CmbQuarterName.MaxDropDownItems = 3;
             this.CmbQuarterName.Name = "CmbQuarterName";
-            this.CmbQuarterName.Size = new System.Drawing.Size(168, 21);
+            this.CmbQuarterName.Size = new System.Drawing.Size(168, 24);
             this.CmbQuarterName.TabIndex = 18;
             // 
             // LblAddress2
@@ -344,7 +348,7 @@ namespace InstructorBriefcaseExtractor
             this.TxtAddress.Enabled = false;
             this.TxtAddress.Location = new System.Drawing.Point(106, 22);
             this.TxtAddress.Name = "TxtAddress";
-            this.TxtAddress.Size = new System.Drawing.Size(388, 20);
+            this.TxtAddress.Size = new System.Drawing.Size(388, 22);
             this.TxtAddress.TabIndex = 16;
             // 
             // TxtPIN
@@ -352,14 +356,14 @@ namespace InstructorBriefcaseExtractor
             this.TxtPIN.Location = new System.Drawing.Point(245, 116);
             this.TxtPIN.Name = "TxtPIN";
             this.TxtPIN.PasswordChar = '*';
-            this.TxtPIN.Size = new System.Drawing.Size(168, 20);
+            this.TxtPIN.Size = new System.Drawing.Size(168, 22);
             this.TxtPIN.TabIndex = 15;
             // 
             // TxtUserName
             // 
             this.TxtUserName.Location = new System.Drawing.Point(245, 92);
             this.TxtUserName.Name = "TxtUserName";
-            this.TxtUserName.Size = new System.Drawing.Size(168, 20);
+            this.TxtUserName.Size = new System.Drawing.Size(168, 22);
             this.TxtUserName.TabIndex = 12;
             // 
             // LblPassword
@@ -392,7 +396,7 @@ namespace InstructorBriefcaseExtractor
             this.LblOutputSummary.AutoSize = true;
             this.LblOutputSummary.Location = new System.Drawing.Point(9, 4);
             this.LblOutputSummary.Name = "LblOutputSummary";
-            this.LblOutputSummary.Size = new System.Drawing.Size(85, 13);
+            this.LblOutputSummary.Size = new System.Drawing.Size(114, 17);
             this.LblOutputSummary.TabIndex = 1;
             this.LblOutputSummary.Text = "Output Summary";
             // 
@@ -407,20 +411,21 @@ namespace InstructorBriefcaseExtractor
             // LblVersion
             // 
             this.LblVersion.AutoSize = true;
-            this.LblVersion.Location = new System.Drawing.Point(7, 362);
+            this.LblVersion.Location = new System.Drawing.Point(7, 391);
             this.LblVersion.Name = "LblVersion";
-            this.LblVersion.Size = new System.Drawing.Size(42, 13);
+            this.LblVersion.Size = new System.Drawing.Size(56, 17);
             this.LblVersion.TabIndex = 30;
             this.LblVersion.Text = "Version";
             // 
             // menuStrip1
             // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.ConfigurationToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1137, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(982, 28);
             this.menuStrip1.TabIndex = 31;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -429,27 +434,43 @@ namespace InstructorBriefcaseExtractor
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ExitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(44, 24);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // ExitToolStripMenuItem
             // 
             this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
-            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
+            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(108, 26);
             this.ExitToolStripMenuItem.Text = "Exit";
             this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
             // ConfigurationToolStripMenuItem
             // 
             this.ConfigurationToolStripMenuItem.Name = "ConfigurationToolStripMenuItem";
-            this.ConfigurationToolStripMenuItem.Size = new System.Drawing.Size(93, 20);
+            this.ConfigurationToolStripMenuItem.Size = new System.Drawing.Size(112, 24);
             this.ConfigurationToolStripMenuItem.Text = "Configuration";
             this.ConfigurationToolStripMenuItem.Click += new System.EventHandler(this.ConfigurationToolStripMenuItem_Click);
+            // 
+            // CbkExcelRollWaitListExport
+            // 
+            this.CbkExcelRollWaitListExport.Location = new System.Drawing.Point(129, 49);
+            this.CbkExcelRollWaitListExport.Name = "CbkExcelRollWaitListExport";
+            this.CbkExcelRollWaitListExport.Size = new System.Drawing.Size(130, 24);
+            this.CbkExcelRollWaitListExport.TabIndex = 5;
+            this.CbkExcelRollWaitListExport.Text = "Include Waitlist";
+            // 
+            // CbkExcelClassWaitListExport
+            // 
+            this.CbkExcelClassWaitListExport.Location = new System.Drawing.Point(129, 17);
+            this.CbkExcelClassWaitListExport.Name = "CbkExcelClassWaitListExport";
+            this.CbkExcelClassWaitListExport.Size = new System.Drawing.Size(130, 24);
+            this.CbkExcelClassWaitListExport.TabIndex = 6;
+            this.CbkExcelClassWaitListExport.Text = "Include Waitlist";
             // 
             // Extractor
             // 
             this.CancelButton = this.BtnCancel;
-            this.ClientSize = new System.Drawing.Size(1137, 491);
+            this.ClientSize = new System.Drawing.Size(982, 645);
             this.Controls.Add(this.LblVersion);
             this.Controls.Add(this.PanelOutput);
             this.Controls.Add(this.PanelQuarterFound);
@@ -526,6 +547,8 @@ namespace InstructorBriefcaseExtractor
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ExitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ConfigurationToolStripMenuItem;
+        internal System.Windows.Forms.CheckBox CbkExcelClassWaitListExport;
+        internal System.Windows.Forms.CheckBox CbkExcelRollWaitListExport;
     }
 }
 

@@ -132,6 +132,8 @@ namespace InstructorBriefcaseExtractor
         {
 
             #region Excel Class
+            ChkExcelClassExport.Checked = Class.Export;
+            ChkExcelClassWaitListExport.Checked = Class.ExportWaitlist;
             if (!Class.TemplateDirectory.EndsWith("\\")) { Class.TemplateDirectory += "\\"; }
             TxtExcelTemplateNameAndDirectory.Text = Class.TemplateDirectory + Class.TemplateFileName;
             TxtExcelSaveAsDirectory.Text = Class.SaveFileDirectory;
@@ -145,6 +147,7 @@ namespace InstructorBriefcaseExtractor
             TxtExcelClassLastName.Text = Class.LastNameColumnLetter;
             TxtExcelClassFirstName.Text = Class.FirstNameColumnLetter;
             TxtExcelClassItemCell.Text = Class.ItemCell;
+            ChkExcelClassWaitListExport.Checked = Class.ExportWaitlist;
 
             #region OptHeader Textbox and Checkboxes
             TxtExcelClassOptHeader1.Text = Class.OptHead1ColumnLetter;
@@ -172,7 +175,8 @@ namespace InstructorBriefcaseExtractor
             #endregion
 
             #region Excel Roll
-            ChkExcelRollExport.Checked = Roll.Export;
+            ChkExcelRollExport.Checked = Roll.Export;            
+            ChkExcelRollWaitListExport.Checked = Roll.ExportWaitlist;
             ChkExcelLabExport.Checked = Roll.ExportLab;
             txtRollFirstClass.Text = Roll.FirstClass.ToString();
             txtRollClassIncrement.Text = Roll.ClassIncrement.ToString();
@@ -358,6 +362,8 @@ namespace InstructorBriefcaseExtractor
                     ExcelClassSettings.FirstStudent = ExcelClassConfiguration.FirstStudentDefault;
                 }
                 ExcelClassSettings.SIDColumnLetter = TxtExcelClassSID.Text;
+                ExcelClassSettings.Export = ChkExcelClassExport.Checked;
+                ExcelClassSettings.ExportWaitlist = ChkExcelClassWaitListExport.Checked;
                 ExcelClassSettings.ExportSID = chkExcelClassExportSID.Checked;
                 ExcelClassSettings.SIDLast4ColumnLetter = TxtExcelClassSIDLast4.Text;
                 ExcelClassSettings.ExportSIDLast4 = chkExcelClassExportSIDLast4.Checked;
@@ -379,6 +385,8 @@ namespace InstructorBriefcaseExtractor
                 #endregion
 
                 #region Excel Roll
+                ExcelRollSettings.Export = ChkExcelRollExport.Checked;
+                ExcelRollSettings.ExportWaitlist = ChkExcelRollWaitListExport.Checked;
                 try
                 {
                     ExcelRollSettings.FirstClass = Convert.ToInt32(txtRollFirstClass.Text);

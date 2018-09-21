@@ -64,9 +64,13 @@ namespace InstructorBriefcaseExtractor.Model
         public string Opt1 { get; set; }
         public string Opt2 { get; set; }
         public string Opt3 { get; set; }
+        public string Opt3Waitlist { get; set; }
         public string Opt1Header { get; set; }
         public string Opt2Header { get; set; }
-        public string Opt3Header { get; set; }    
+        public string Opt3Header { get; set; }
+        public string Opt3WaitlistHeader { get; set; }
+        public string WaitlistStatus { get; set; }
+        public string WaitlistDate { get; set; }
         public string SID { get; set; }
         public string SuffuxName { get; set; }
 

@@ -12,6 +12,12 @@ namespace InstructorBriefcaseExtractor.Model
         {
             get { return "new stuLine("; } 
         }
+
+        private string JavaWaitListVariable
+        {
+            get { return "new classLn("; }
+        }
+
         //private readonly HeaderColumn Phone;
 
         public Course(string RawHTML, string InstructorName, string CourseName, 
@@ -43,47 +49,54 @@ namespace InstructorBriefcaseExtractor.Model
                 StrOpt1Header = EV.FromJavaScript(RawHTML, "optHead1", "'", "'");
                 StrOpt2Header = EV.FromJavaScript(RawHTML, "optHead2", "'", "'");
                 StrOpt3Header = EV.FromJavaScript(RawHTML, "optHead3", "'", "'");
-
-
+                StrOptWlHeader = EV.FromJavaScript(RawHTML, "optWLHead", "'", "'");
 
                 if (SaveOptionHeader)
                 {
                     ExcelClassSettings.HeaderNames.Header1 = StrOpt1Header;
                     ExcelClassSettings.HeaderNames.Header2 = StrOpt2Header;
                     ExcelClassSettings.HeaderNames.Header3 = StrOpt3Header;
+                    ExcelClassSettings.HeaderNames.WaitListHeader = StrOptWlHeader;
                     SaveOptionHeader = false;
                 }
 
                 int Count = Convert.ToInt32(EV.FromJavaScript(RawHTML, "totStu", "'", "'"));
                 myStudents = new Student[Count];
 
+                Count = Convert.ToInt32(EV.FromJavaScript(RawHTML, "totStuWl", "'", "'"));
+                myWaitlist= new Student[Count];
+
                 // Extract all students from RawHTML
                 ProcessStudentsFromHTML(RawHTML, ExcelClassSettings.HeaderNames);
             }
         }
-        
+
         private void ProcessStudentsFromHTML(string RawHTML, OptionHeaders HeaderNames)
         {
             int HTMLStart = RawHTML.IndexOf(JavaStudentListVariable);
             int Count = 0;
             string temp = "";
+
+            // Class
+            // function stuLine( sid, name, enrCredit, gr, opt1, opt2, opt3 )
             do
             {
                 int StudentStart = RawHTML.IndexOf("(", HTMLStart);
                 int StudentEnd = RawHTML.IndexOf(")", StudentStart);
                 string Student = RawHTML.Substring(StudentStart, StudentEnd - StudentStart);
                 //stuLine( sid, name, enrCredit, gr, Opt1, Opt2, Opt3 )
-                StudentStart = Student.IndexOf("'")+1;
-                StudentEnd = Student.IndexOf("'", StudentStart+1);
+                StudentStart = Student.IndexOf("'") + 1;
+                StudentEnd = Student.IndexOf("'", StudentStart + 1);
                 myStudents[Count] = new Student()
                 {
                     SID = Student.Substring(StudentStart, StudentEnd - StudentStart).Trim(),
                     Opt1Header = HeaderNames.Header1,
                     Opt2Header = HeaderNames.Header2,
-                    Opt3Header = HeaderNames.Header3
+                    Opt3Header = HeaderNames.Header3,
+
                 };
 
-                StudentStart = Student.IndexOf("'", StudentEnd+1)+1;
+                StudentStart = Student.IndexOf("'", StudentEnd + 1) + 1;
                 StudentEnd = Student.IndexOf("'", StudentStart + 1);
                 myStudents[Count].ExtractedName = Student.Substring(StudentStart, StudentEnd - StudentStart).Trim();
 
@@ -92,8 +105,8 @@ namespace InstructorBriefcaseExtractor.Model
                 myStudents[Count].EnrolledCredit = Student.Substring(StudentStart, StudentEnd - StudentStart).Trim();
 
                 StudentStart = Student.IndexOf("'", StudentEnd + 1) + 1;
-                StudentEnd = Student.IndexOf("'", StudentStart + 1);                
-                temp= Student.Substring(StudentStart, StudentEnd - StudentStart).Trim();
+                StudentEnd = Student.IndexOf("'", StudentStart + 1);
+                temp = Student.Substring(StudentStart, StudentEnd - StudentStart).Trim();
                 if (temp != "&nbsp")
                 {
                     myStudents[Count].gr = temp;
@@ -145,11 +158,73 @@ namespace InstructorBriefcaseExtractor.Model
                     }
                 }
                 Count += 1;
-                HTMLStart = RawHTML.IndexOf(JavaStudentListVariable, HTMLStart+1);
-            } while (HTMLStart >0);           
+                HTMLStart = RawHTML.IndexOf(JavaStudentListVariable, HTMLStart + 1);
+            } while (HTMLStart > 0);
+
+            // Waitlist
+            //  function classLn( sid, name, status,  datetime, opt3 )
+            HTMLStart = RawHTML.IndexOf(JavaWaitListVariable);
+            Count = 0;
+            temp = "";
+            if (HTMLStart > 0)
+            {
+                do
+                {
+                    int StudentStart = RawHTML.IndexOf("(", HTMLStart);
+                    int StudentEnd = RawHTML.IndexOf(")", StudentStart);
+                    string Student = RawHTML.Substring(StudentStart, StudentEnd - StudentStart);
+                    //stuLine( sid, name, W-Listed, Date, email)
+                    StudentStart = Student.IndexOf("'") + 1;
+                    StudentEnd = Student.IndexOf("'", StudentStart + 1);
+                    myWaitlist[Count] = new Student()
+                    {
+                        SID = Student.Substring(StudentStart, StudentEnd - StudentStart).Trim(),
+                        Opt3WaitlistHeader = HeaderNames.WaitListHeader
+                    };
+
+                    StudentStart = Student.IndexOf("'", StudentEnd + 1) + 1;
+                    StudentEnd = Student.IndexOf("'", StudentStart + 1);
+                    myWaitlist[Count].ExtractedName = Student.Substring(StudentStart, StudentEnd - StudentStart).Trim();
+
+                    StudentStart = Student.IndexOf("'", StudentEnd + 1) + 1;
+                    StudentEnd = Student.IndexOf("'", StudentStart + 1);
+                    myWaitlist[Count].WaitlistStatus = Student.Substring(StudentStart, StudentEnd - StudentStart).Trim();
+
+                    StudentStart = Student.IndexOf("'", StudentEnd + 1) + 1;
+                    StudentEnd = Student.IndexOf("'", StudentStart + 1);
+                    myWaitlist[Count].WaitlistDate = Student.Substring(StudentStart, StudentEnd - StudentStart).Trim();
+
+                    StudentStart = Student.IndexOf("'", StudentEnd + 1) + 1;
+                    StudentEnd = Student.IndexOf("'", StudentStart + 1);
+                    // fixed change in HTML as the student email has been added.
+                    if ((StudentEnd - StudentStart) > 0)
+                    {
+                        temp = Student.Substring(StudentStart, StudentEnd - StudentStart).Trim();
+
+                        if (temp != "&nbsp")
+                        {
+                            myWaitlist[Count].Opt3Waitlist = temp;
+                            myWaitlist[Count].Email = temp;
+                        }
+                        else
+                        {
+                            myWaitlist[Count].Opt3 = "";
+                        }
+                    }
+                    Count += 1;
+                    HTMLStart = RawHTML.IndexOf(JavaWaitListVariable, HTMLStart + 1);
+                } while (HTMLStart > 0);
+            }
         }
 
         public OptionHeaders SchoolHeaders;
+
+        private Student[] myWaitlist;
+        public Student[] Waitlist
+        {
+            get { return myWaitlist; }
+            set { myWaitlist = value; }
+        }
 
         private Student[] myStudents;
         public Student[] Students
@@ -301,6 +376,15 @@ namespace InstructorBriefcaseExtractor.Model
             get { return StrOpt3Header; }
             set { StrOpt3Header = value; }
         }
+
+        
+        private string StrOptWlHeader;
+        public string OptWaitlistHeader
+        {
+            get { return StrOptWlHeader; }
+            set { StrOptWlHeader = value; }
+        }
+
 
     }
 

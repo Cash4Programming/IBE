@@ -26,7 +26,8 @@ namespace InstructorBriefcaseExtractor.Model
         }
 
         public bool Export { get; set; }
-        
+        public bool ExportWaitlist { get; set; }
+
         public string TemplateFileName { get; set; }
         public string TemplateDirectory
         {

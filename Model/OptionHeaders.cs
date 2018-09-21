@@ -14,9 +14,11 @@ namespace InstructorBriefcaseExtractor.Model
             Header1 = HeaderDefault;
             Header2 = HeaderDefault;
             Header3 = HeaderDefault;
+            WaitListHeader = HeaderDefault;
         }
         public string Header1 { get; set; }
         public string Header2 { get; set; }
         public string Header3 { get; set; }
+        public string WaitListHeader { get; set; }
     }
 }

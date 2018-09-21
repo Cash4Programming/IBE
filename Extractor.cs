@@ -14,9 +14,9 @@ namespace InstructorBriefcaseExtractor
         private readonly static string CrLf = "\r\n";
         
         // 510 x 410 - default size
-        private int smallheight = 425;
-        private int bigheight = 656;
-        private int defaultwidth = 544;
+        private int smallheight = 464;
+        private int bigheight = 695;
+        private int defaultwidth = 563;
         // 
 
         private Wizard myWizard;
@@ -148,8 +148,12 @@ namespace InstructorBriefcaseExtractor
             CbkClickerExport.Checked = myWizard.ClickerSettings.Export;
             CbkMTGExport.Checked = myWizard.MTGSettings.Export;
             CbkExcelClassExport.Checked = myWizard.ExcelClassSettings.Export;
+            CbkExcelClassWaitListExport.Checked = myWizard.ExcelClassSettings.ExportWaitlist;
+
             CbkExcelRollExport.Checked = myWizard.ExcelRollSettings.Export;
             CbkExcelLabExport.Checked = myWizard.ExcelRollSettings.ExportLab;
+            CbkExcelRollWaitListExport.Checked = myWizard.ExcelRollSettings.ExportWaitlist;
+
             CbkOutlookExport.Checked = myWizard.OutlookSettings.Export;
             CbkWamapExport.Checked = myWizard.WamapSettings.Export;
             CbkWebAssignExport.Checked = myWizard.WebAssignSettings.Export;

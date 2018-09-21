@@ -5,6 +5,7 @@ namespace InstructorBriefcaseExtractor.Model
     public class ExcelRollSettings
     {
         public bool Export { get; set; }
+        public bool ExportWaitlist { get; set; }
         public bool ExportLab { get; set; }
         public string Header { get; set; }
         public int FirstClass { get; set; }

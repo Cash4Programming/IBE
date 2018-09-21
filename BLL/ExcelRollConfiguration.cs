@@ -11,6 +11,7 @@ namespace InstructorBriefcaseExtractor.BLL
         private string xmlEXCELNodeNameLocation;
 
         private string ExportKey;
+        private readonly string ExportWaitListKey = "ExportWaitList";
         private string ExportLabKey;
         private string ClassIncrementKey;
         private string ClassNameColumnLetterKey;
@@ -89,6 +90,17 @@ namespace InstructorBriefcaseExtractor.BLL
                 ExcellRollSettings.Export = false;
                 XML.XMLWriteFile(xmlEXCELNodeNameLocation, ExportKey, ExcellRollSettings.Export.ToString());
             }
+
+            try
+            {
+                ExcellRollSettings.ExportWaitlist = Convert.ToBoolean(XML.XMLReadFile(xmlEXCELNodeNameLocation, ExportWaitListKey).ToLower());
+            }
+            catch
+            {
+                ExcellRollSettings.ExportWaitlist = false;
+                XML.XMLWriteFile(xmlEXCELNodeNameLocation, ExportWaitListKey, ExcellRollSettings.ExportWaitlist.ToString());
+            }
+
 
             try
             {
@@ -180,6 +192,7 @@ namespace InstructorBriefcaseExtractor.BLL
             XMLhelper XML = new XMLhelper(UserSettings);
 
             XML.XMLWriteFile(xmlEXCELNodeNameLocation, ExportKey, ExcellRollSettings.Export.ToString());
+            XML.XMLWriteFile(xmlEXCELNodeNameLocation, ExportWaitListKey, ExcellRollSettings.ExportWaitlist.ToString());
             XML.XMLWriteFile(xmlEXCELNodeNameLocation, ExportLabKey, ExcellRollSettings.ExportLab.ToString());
             XML.XMLWriteFile(xmlEXCELNodeNameLocation, ClassIncrementKey, ExcellRollSettings.ClassIncrement.ToString());
             XML.XMLWriteFile(xmlEXCELNodeNameLocation, ClassNameColumnLetterKey, ExcellRollSettings.ClassNameColumnLetter);

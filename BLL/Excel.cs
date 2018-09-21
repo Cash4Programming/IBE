@@ -884,6 +884,34 @@ namespace InstructorBriefcaseExtractor.BLL
                                 CellValue = C.Students[s].FirstName;
                                 ExcelRollWorksheet.Cells[CellRow, CellColumn] = CellValue; 
                             }
+                            // WAITLIST
+                            // For the start row 
+                            int WaitlistCellRow = CourseCount + Row;
+
+
+                            if (ExcelRollSettings.ExportWaitlist)
+                            {
+                                CourseCount = C.Waitlist.GetLength(0);
+                                for (int s = 0; s < CourseCount; s++)
+                                {
+                                    CellRow = s + WaitlistCellRow;
+                                    if (ExcelRollSettings.LastNameColumnLetter == "")
+                                    {
+                                        ExcelRollSettings.LastNameColumnLetter = ExcelRollConfiguration.LastNameColumnLetterDefault;
+                                    }
+                                    CellColumn = CellLetterToRow(ExcelRollSettings.LastNameColumnLetter);
+                                    CellValue = C.Waitlist[s].LastName;
+                                    ExcelRollWorksheet.Cells[CellRow, CellColumn] = CellValue;
+
+                                    if (ExcelRollSettings.FirstNameColumnLetter == "")
+                                    {
+                                        ExcelRollSettings.FirstNameColumnLetter = ExcelRollConfiguration.FirstNameColumnLetterDefault;
+                                    }
+                                    CellColumn = CellLetterToRow(ExcelRollSettings.FirstNameColumnLetter);
+                                    CellValue = C.Waitlist[s].FirstName;
+                                    ExcelRollWorksheet.Cells[CellRow, CellColumn] = CellValue;
+                                }
+                            }
                         }
                     }
 
@@ -1093,6 +1121,70 @@ namespace InstructorBriefcaseExtractor.BLL
                                     CellValue = myCourses[myCourseIndex].Students[i].SID;
                                     CellValue = "'" + CellValue.Substring(CellValue.Length - 4, 4);
                                     mySheet.Cells[CellRow, CellColumn] = CellValue;
+                                }
+                            }
+
+                            // WAITLIST
+                            // For the start row 
+                            int WaitlistCellRow = FirstStudent + StudentEnd - StudentStart + 1;
+
+                            // reset index for waitlist
+                            StudentStart = myCourses[myCourseIndex].Waitlist.GetLowerBound(0);
+                            StudentEnd = myCourses[myCourseIndex].Waitlist.GetUpperBound(0);
+
+                            
+                            if (ExcelClassSettings.ExportWaitlist)
+                            {
+                                for (int i = StudentStart; i <= StudentEnd; i++)
+                                {
+                                    CellRow = WaitlistCellRow + i - StudentStart;
+                                    // Last Name
+                                    if (ExcelClassSettings.LastNameColumnLetter == "")
+                                    {
+                                        ExcelClassSettings.LastNameColumnLetter = ExcelClassConfiguration.LastNameColumnLetterDefault;
+                                    }
+                                    CellColumn = CellLetterToRow(ExcelClassSettings.LastNameColumnLetter);
+                                    CellValue = myCourses[myCourseIndex].Waitlist[i].LastName;
+
+                                    mySheet.Cells[CellRow, CellColumn] = CellValue;
+
+                                    // First Name + MI
+                                    if (ExcelClassSettings.FirstNameColumnLetter == "")
+                                    {
+                                        ExcelClassSettings.FirstNameColumnLetter = ExcelClassConfiguration.FirstNameColumnLetterDefault;
+                                    }
+                                    CellColumn = CellLetterToRow(ExcelClassSettings.FirstNameColumnLetter);
+                                    CellValue = myCourses[myCourseIndex].Waitlist[i].FirstName;
+                                    if (ExcelClassSettings.ExportMiddleInitial)
+                                    {
+                                        if (myCourses[myCourseIndex].Waitlist[i].MiddleName.Length > 0)
+                                        {
+                                            CellValue += " " + myCourses[myCourseIndex].Waitlist[i].MiddleName.Substring(0, 1);
+                                        }
+                                    }
+                                    mySheet.Cells[CellRow, CellColumn] = CellValue;
+
+                                    if (ExcelClassSettings.ExportSID)
+                                    {
+                                        if (ExcelClassSettings.SIDColumnLetter == "")
+                                        {
+                                            ExcelClassSettings.SIDColumnLetter = ExcelClassConfiguration.SIDColumnLetterDefault;
+                                        }
+                                        CellColumn = CellLetterToRow(ExcelClassSettings.SIDColumnLetter);
+                                        CellValue = myCourses[myCourseIndex].Waitlist[i].SID;
+                                        mySheet.Cells[CellRow, CellColumn] = CellValue;
+                                    }
+                                    if (ExcelClassSettings.ExportSIDLast4)
+                                    {
+                                        if (ExcelClassSettings.SIDLast4ColumnLetter == "")
+                                        {
+                                            ExcelClassSettings.SIDLast4ColumnLetter = ExcelClassConfiguration.SIDLast4ColumnLetterDefault;
+                                        }
+                                        CellColumn = CellLetterToRow(ExcelClassSettings.SIDLast4ColumnLetter);
+                                        CellValue = myCourses[myCourseIndex].Waitlist[i].SID;
+                                        CellValue = "'" + CellValue.Substring(CellValue.Length - 4, 4);
+                                        mySheet.Cells[CellRow, CellColumn] = CellValue;
+                                    }
                                 }
                             }
                         }
