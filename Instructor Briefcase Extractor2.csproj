@@ -38,11 +38,11 @@
     <InstallUrl>https://jenck.net/MySchoolTools/</InstallUrl>
     <ProductName>Instructor Briefcase Extractor</ProductName>
     <PublisherName>My School Tools</PublisherName>
-    <MinimumRequiredVersion>2.4.1.1</MinimumRequiredVersion>
+    <MinimumRequiredVersion>2.4.1.3</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>index.html</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationRevision>3</ApplicationRevision>
     <ApplicationVersion>2.4.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -268,12 +268,12 @@
   <ItemGroup>
     <PublishFile Include="stdole">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
   </ItemGroup>

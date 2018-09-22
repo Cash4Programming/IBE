@@ -53,15 +53,17 @@ namespace InstructorBriefcaseExtractor.BLL
             {
                 foreach (Course C in myCourses)
                 {
+                    StringBuilder SB = new StringBuilder(2880); // 72 character per student * 40 students
+
                     if (C.Export)
                     {
-                        StringBuilder SB = new StringBuilder(2880); // 72 character per student * 40 students
+
                         // Export to Making the grade output format
                         // Last,First,SID,Sex,GroupCode,Cit System,Counselor Name,Parent Name,
                         // Street Address,City,St,Zip Code,Book Number,Lock,,Home Phone,
                         // Custom Field 01,Custom Field 02,Custom Field 03,Custom Field 04,Custom Field 05,
                         // Custom Field 06,Custom Field 07,Custom Field 08,,,,,,,,,,
-                        int StudentCount =C.Students.Length;  // this is a 1 dimensional array
+                        int StudentCount = C.Students.Length;  // this is a 1 dimensional array
                         for (int i = 0; i < StudentCount; i++)
                         {
                             Student S = C.Students[i];
@@ -82,7 +84,7 @@ namespace InstructorBriefcaseExtractor.BLL
                             SB.Append(",");                 // Book Number
                             SB.Append(",");                 // Locker Bin
                             SB.Append(",");                 // Birth Date
-                            SB.Append(S.Phone+ ",");        // Home or Work Phone
+                            SB.Append(S.Phone + ",");        // Home or Work Phone
                             SB.Append(",");                 // Line Library Comments
                             SB.Append(",");                 // Custom Field 01
                             SB.Append(",");                 // Custom Field 02
@@ -104,7 +106,62 @@ namespace InstructorBriefcaseExtractor.BLL
                             SB.Append(",");                 // PAR
                             SB.Append(",");                 // QFT
                             SB.Append(",");                 // CAT0
-                            if (i < StudentCount) { SB.Append("\r\n"); }                            
+                            if (i < StudentCount) { SB.Append("\r\n"); }
+                        }
+
+                        if (MTGSettings.ExportWaitlist)
+                        {
+
+                            // Export to Making the grade output format
+                            // Last,First,SID,Sex,GroupCode,Cit System,Counselor Name,Parent Name,
+                            // Street Address,City,St,Zip Code,Book Number,Lock,,Home Phone,
+                            // Custom Field 01,Custom Field 02,Custom Field 03,Custom Field 04,Custom Field 05,
+                            // Custom Field 06,Custom Field 07,Custom Field 08,,,,,,,,,,
+                            int WaitlistCount = C.Waitlist.Length;  // this is a 1 dimensional array
+                            for (int i = 0; i < WaitlistCount; i++)
+                            {
+                                Student S = C.Waitlist[i];
+
+                                SB.Append(S.LastName + ", ");    // Student Last Name
+                                SB.Append(S.FirstName + ",");   // Student First Name
+                                SB.Append(S.SID + ",");         // SID
+                                SB.Append(",");                 // Sex
+                                SB.Append(",");                 // GroupCode
+                                SB.Append(",");                 // Grd Sys
+                                SB.Append(",");                 // Cit Mark
+                                SB.Append(",");                 // Counselor Name
+                                SB.Append(",");                 // Parent Name
+                                SB.Append(",");                 // Street Address
+                                SB.Append(",");                 // City
+                                SB.Append(",");                 // State
+                                SB.Append(",");                 // Zip Code
+                                SB.Append(",");                 // Book Number
+                                SB.Append(",");                 // Locker Bin
+                                SB.Append(",");                 // Birth Date                                
+                                SB.Append(",");                 // Home or Work Phone
+                                SB.Append(",");                 // Line Library Comments
+                                SB.Append(",");                 // Custom Field 01
+                                SB.Append(",");                 // Custom Field 02
+                                SB.Append(",");                 // Custom Field 03
+                                SB.Append(",");                 // Custom Field 04
+                                SB.Append(",");                 // Custom Field 05
+                                SB.Append(",");                 // Custom Field 06
+                                SB.Append(",");                 // Custom Field 07
+                                SB.Append(",");                 // Custom Field 08
+                                SB.Append(",");                 // Custom Field 09
+                                SB.Append(",");                 // Custom Field 10
+                                SB.Append(",");                 // MAT
+                                SB.Append(",");                 // SPL
+                                SB.Append(",");                 // LIT
+                                SB.Append(",");                 // WRT
+                                SB.Append(",");                 // ORL
+                                SB.Append(",");                 // GRM
+                                SB.Append(",");                 // COM
+                                SB.Append(",");                 // PAR
+                                SB.Append(",");                 // QFT
+                                SB.Append(",");                 // CAT0
+                                if (i < WaitlistCount) { SB.Append("\r\n"); }
+                            }
                         }
 
                         string DiskNames = C.DiskName(MTGSettings.Underscore) + ".txt";
@@ -160,7 +217,7 @@ namespace InstructorBriefcaseExtractor.BLL
                         {
                             SendMessage(this, new Information("Unable to delete file!"));
                         }
-                        else 
+                        else
                         {
                             try
                             {

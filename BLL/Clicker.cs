@@ -44,7 +44,7 @@ namespace InstructorBriefcaseExtractor.BLL
 
         public Clicker()
         {
-            
+
         }
 
         public ClickerConfiguration Options { get; set; }
@@ -67,18 +67,19 @@ namespace InstructorBriefcaseExtractor.BLL
             if (!ClickerSettings.Export) { return; }
             // Create Directory if it does not exist
             if (!Directory.Exists(ClickerSettings.Directory))
-               { Directory.CreateDirectory(ClickerSettings.Directory); }
+            { Directory.CreateDirectory(ClickerSettings.Directory); }
 
             try
             {
                 foreach (Course C in myCourses)
                 {
+                    StringBuilder SB = new StringBuilder(2880); // 72 character per student * 40 students
+
                     if (C.Export)
-                    {                        
-                        StringBuilder SB = new StringBuilder(2880); // 72 character per student * 40 students
+                    {
                         // Export to clicker output format
                         // Index, Last,First,UniqueID (Made up of last name first initial and ID                        
-                        int StudentCount =C.Students.Length;  // this is a 1 dimensional array
+                        int StudentCount = C.Students.Length;  // this is a 1 dimensional array
                         for (int i = 0; i < StudentCount; i++)
                         {
                             if (ClickerSettings.SelectedValue == 1)
@@ -98,13 +99,42 @@ namespace InstructorBriefcaseExtractor.BLL
                                 SB.Append(S.FirstName + ",");   // Student First Name
                                 SB.Append(S.LastName).Append(S.FirstName[0]).Append((i + 1).ToString());         // UniqueID
                             }
-                            if (i < StudentCount) { SB.Append("\r\n"); }                            
+                            if (i < StudentCount) { SB.Append("\r\n"); }
+                        }
+
+                        if (ClickerSettings.ExportWaitlist)
+                        {
+                            // Export to clicker output format
+                            // Index, Last,First,UniqueID (Made up of last name first initial and ID                        
+                            int WaitlistCount = C.Waitlist.Length;  // this is a 1 dimensional array
+                            for (int i = 0; i < WaitlistCount; i++)
+                            {
+                                int j = i + StudentCount;
+                                Student S = C.Waitlist[i];
+                                if (ClickerSettings.SelectedValue == 1)
+                                {
+                                    SB.Append((j + 1).ToString()).Append(". ");
+                                    SB.Append(S.LastName + ",");    // Student Last Name
+                                    SB.Append(S.FirstName + ",");   // Student First Name
+                                    SB.Append(S.LastName).Append(S.FirstName[0]).Append((j + 1).ToString());         // UniqueID
+                                }
+                                else if (ClickerSettings.SelectedValue == 2)
+                                {
+                                    // need to define the format
+                                    SB.Append((j + 1).ToString()).Append(". ");
+                                    SB.Append(S.LastName + ",");    // Student Last Name
+                                    SB.Append(S.FirstName + ",");   // Student First Name
+                                    SB.Append(S.LastName).Append(S.FirstName[0]).Append((j + 1).ToString());         // UniqueID
+                                }
+                                if (i < WaitlistCount) { SB.Append("\r\n"); }
+                            }
+
                         }
 
                         string DiskNames = C.DiskName(ClickerSettings.Underscore) + "_Roster.txt";
                         FileInformation FE = new FileInformation("The file " + DiskNames + " already exists.", ClickerSettings.Directory, DiskNames);
                         DeleteFileError = false;
-                        
+
                         // check to see if file exists
                         SendMessage(this, new Information("Preparing " + DiskNames + "."));
                         if (File.Exists(FE.OldFileNameandPath))
@@ -154,7 +184,7 @@ namespace InstructorBriefcaseExtractor.BLL
                         {
                             SendMessage(this, new Information("Unable to delete file!"));
                         }
-                        else 
+                        else
                         {
                             try
                             {
@@ -177,4 +207,3 @@ namespace InstructorBriefcaseExtractor.BLL
         }
     }
 }
-

@@ -105,7 +105,6 @@ namespace InstructorBriefcaseExtractor
             #endregion
         }
 
-
         private void SetUpClickerFormat()
         {
             CmbClickerFormat.DataSource = Clicker.ClickerFormat();
@@ -176,7 +175,7 @@ namespace InstructorBriefcaseExtractor
 
             #region Excel Roll
             ChkExcelRollExport.Checked = Roll.Export;            
-            ChkExcelRollWaitListExport.Checked = Roll.ExportWaitlist;
+            ChkExcelRollExportWaitlist.Checked = Roll.ExportWaitlist;
             ChkExcelLabExport.Checked = Roll.ExportLab;
             txtRollFirstClass.Text = Roll.FirstClass.ToString();
             txtRollClassIncrement.Text = Roll.ClassIncrement.ToString();
@@ -216,6 +215,7 @@ namespace InstructorBriefcaseExtractor
             TxtClickerDirectory.Text = ClickerSettings.Directory;
             ChkClickerUnderscore.Checked = ClickerSettings.Underscore;
             ChkClickerExport.Checked= ClickerSettings.Export;
+            ChkClickerExportWaitlist.Checked = ClickerSettings.ExportWaitlist;
             SetUpClickerFormat();
             CmbClickerFormat.SelectedValue = ClickerSettings.SelectedValue;
             #endregion
@@ -224,22 +224,26 @@ namespace InstructorBriefcaseExtractor
             TxtWamapDirectory.Text = WamapSettings.Directory;
             ChkWamapUnderscore.Checked = WamapSettings.Underscore;
             ChkWamapExport.Checked = WamapSettings.Export;
+            ChkWamapExportWaitlist.Checked = WamapSettings.ExportWaitlist;
             #endregion
 
             #region MTG
             TxtMTGDirectory.Text = MTGSettings.Directory;
             ChkMTGUnderscore.Checked = MTGSettings.Underscore;
             ChkMTGExport.Checked = MTGSettings.Export;
+            ChkMTGExportWaitlist.Checked = MTGSettings.ExportWaitlist;
             #endregion
 
             #region Outlook
             TxtOutlookUserEmail.Text = UserSettings.Email;
-            ChkOutlookUnderscore.Checked = MTGSettings.Underscore;
-            ChkOutlookUnderscore.Checked = MTGSettings.Export;
+            ChkOutlookUnderscore.Checked = OutlookSettings.Underscore;
+            ChkOutlookExport.Checked = OutlookSettings.Export;
+            ChkOutlookExportWaitlist.Checked = OutlookSettings.ExportWaitlist;
             #endregion
 
             #region WebAssign
             ChkWebAssignExport.Checked = WebAssignSettings.Export;
+            ChkWebAssignExportWaitlist.Checked = WebAssignSettings.ExportWaitlist;
             TxtWebAssignDirectory.Text = WebAssignSettings.Directory;
             ChkWebAssignUnderscore.Checked = WebAssignSettings.Underscore;
             if (WebAssignSettings.SEPARATOR == WebAssignSeperator.Tab)
@@ -293,6 +297,7 @@ namespace InstructorBriefcaseExtractor
                 ClickerSettings.Directory = TxtClickerDirectory.Text;
                 ClickerSettings.Underscore = ChkClickerUnderscore.Checked;
                 ClickerSettings.Export = ChkClickerExport.Checked;
+                ClickerSettings.ExportWaitlist = ChkClickerExportWaitlist.Checked;
                 ClickerSettings.SelectedValue = Convert.ToInt32(CmbClickerFormat.SelectedValue);
                 #endregion
 
@@ -300,22 +305,26 @@ namespace InstructorBriefcaseExtractor
                 WamapSettings.Directory = TxtWamapDirectory.Text;
                 WamapSettings.Underscore = ChkWamapUnderscore.Checked;
                 WamapSettings.Export = ChkWamapExport.Checked;
+                WamapSettings.ExportWaitlist = ChkWamapExportWaitlist.Checked;
                 #endregion
 
                 #region MTG
                 MTGSettings.Directory = TxtMTGDirectory.Text;
                 MTGSettings.Underscore = ChkMTGUnderscore.Checked;
                 MTGSettings.Export = ChkMTGExport.Checked;
+                MTGSettings.ExportWaitlist = ChkMTGExportWaitlist.Checked;
                 #endregion
 
                 #region Outlook
                 UserSettings.Email = TxtOutlookUserEmail.Text;
                 OutlookSettings.Underscore = ChkOutlookUnderscore.Checked;
-                OutlookSettings.Export = ChkOutlookUnderscore.Checked;
+                OutlookSettings.Export = ChkOutlookExport.Checked;
+                OutlookSettings.ExportWaitlist = ChkOutlookExportWaitlist.Checked;
                 #endregion
 
                 #region WebAssign
                 WebAssignSettings.Export = ChkWebAssignExport.Checked;
+                WebAssignSettings.ExportWaitlist = ChkWebAssignExportWaitlist.Checked;
                 WebAssignSettings.Directory = TxtWebAssignDirectory.Text;
                 WebAssignSettings.Underscore = ChkWebAssignUnderscore.Checked;
 
@@ -348,6 +357,9 @@ namespace InstructorBriefcaseExtractor
 
                 #region Excel Class
 
+                ExcelClassSettings.Export = ChkExcelClassExport.Checked;
+                ExcelClassSettings.ExportWaitlist = ChkExcelClassWaitListExport.Checked;
+
                 ExcelClassSettings.TemplateDirectory = Path.GetDirectoryName(TxtExcelTemplateNameAndDirectory.Text);
                 ExcelClassSettings.TemplateFileName = Path.GetFileName(TxtExcelTemplateNameAndDirectory.Text);
                 ExcelClassSettings.SaveFileDirectory = TxtExcelSaveAsDirectory.Text;
@@ -362,8 +374,6 @@ namespace InstructorBriefcaseExtractor
                     ExcelClassSettings.FirstStudent = ExcelClassConfiguration.FirstStudentDefault;
                 }
                 ExcelClassSettings.SIDColumnLetter = TxtExcelClassSID.Text;
-                ExcelClassSettings.Export = ChkExcelClassExport.Checked;
-                ExcelClassSettings.ExportWaitlist = ChkExcelClassWaitListExport.Checked;
                 ExcelClassSettings.ExportSID = chkExcelClassExportSID.Checked;
                 ExcelClassSettings.SIDLast4ColumnLetter = TxtExcelClassSIDLast4.Text;
                 ExcelClassSettings.ExportSIDLast4 = chkExcelClassExportSIDLast4.Checked;
@@ -386,7 +396,7 @@ namespace InstructorBriefcaseExtractor
 
                 #region Excel Roll
                 ExcelRollSettings.Export = ChkExcelRollExport.Checked;
-                ExcelRollSettings.ExportWaitlist = ChkExcelRollWaitListExport.Checked;
+                ExcelRollSettings.ExportWaitlist = ChkExcelRollExportWaitlist.Checked;
                 try
                 {
                     ExcelRollSettings.FirstClass = Convert.ToInt32(txtRollFirstClass.Text);

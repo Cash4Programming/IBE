@@ -78,10 +78,18 @@ namespace InstructorBriefcaseExtractor.Model
         {
             get
             {
-                if(Opt1Header.ToLower().Contains("phone"))
+                if (Opt1Header == null)
+                { return ""; }
+                if (Opt1Header.ToLower().Contains("phone"))
                 { return Opt1; }
+
+                if (Opt2Header == null)
+                { return ""; }
                 if (Opt2Header.ToLower().Contains("phone"))
                 { return Opt2; }
+
+                if (Opt3Header == null)
+                { return ""; }
                 if (Opt3Header.ToLower().Contains("phone"))
                 { return Opt3; }
 

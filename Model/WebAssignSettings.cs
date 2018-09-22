@@ -20,6 +20,7 @@ namespace InstructorBriefcaseExtractor.Model
         public string Institution { get; set; }
         public bool Underscore { get; set; }
         public bool Export { get; set; }
+        public bool ExportWaitlist { get; set; }
         public string Directory
         {
             get

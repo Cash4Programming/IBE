@@ -14,7 +14,7 @@ namespace InstructorBriefcaseExtractor
         private readonly static string CrLf = "\r\n";
         
         // 510 x 410 - default size
-        private int smallheight = 464;
+        private int smallheight = 500;
         private int bigheight = 695;
         private int defaultwidth = 563;
         // 
@@ -146,17 +146,27 @@ namespace InstructorBriefcaseExtractor
             Initilizing = true;  // suppress the message window
             // Courses Panel
             CbkClickerExport.Checked = myWizard.ClickerSettings.Export;
-            CbkMTGExport.Checked = myWizard.MTGSettings.Export;
-            CbkExcelClassExport.Checked = myWizard.ExcelClassSettings.Export;
-            CbkExcelClassWaitListExport.Checked = myWizard.ExcelClassSettings.ExportWaitlist;
+            CbkClickerExportWaitlist.Checked = myWizard.ClickerSettings.ExportWaitlist;
 
-            CbkExcelRollExport.Checked = myWizard.ExcelRollSettings.Export;
+            CbkMTGExport.Checked = myWizard.MTGSettings.Export;
+            CbkMTGExportWaitlist.Checked = myWizard.MTGSettings.ExportWaitlist;
+
+            CbkExcelClassExport.Checked = myWizard.ExcelClassSettings.Export;
+            CbkExcelClassExportWaitlist.Checked = myWizard.ExcelClassSettings.ExportWaitlist;
+
             CbkExcelLabExport.Checked = myWizard.ExcelRollSettings.ExportLab;
-            CbkExcelRollWaitListExport.Checked = myWizard.ExcelRollSettings.ExportWaitlist;
+            CbkExcelRollExport.Checked = myWizard.ExcelRollSettings.Export;            
+            CbkExcelRollExportWaitlist.Checked = myWizard.ExcelRollSettings.ExportWaitlist;
 
             CbkOutlookExport.Checked = myWizard.OutlookSettings.Export;
+            CbkOutlookExportWaitlist.Checked = myWizard.OutlookSettings.ExportWaitlist;
+
             CbkWamapExport.Checked = myWizard.WamapSettings.Export;
+            CbkWamapExportWaitlist.Checked = myWizard.WamapSettings.ExportWaitlist;
+
             CbkWebAssignExport.Checked = myWizard.WebAssignSettings.Export;
+            CbkWebAssignExportWaitlist.Checked = myWizard.WebAssignSettings.ExportWaitlist;
+
             ChkOverWrite.Checked = myWizard.UserSettings.OverWriteAll;
             Initilizing = false;
         }
@@ -189,13 +199,27 @@ namespace InstructorBriefcaseExtractor
         private void SaveExportSettings()
         {
             myWizard.ClickerSettings.Export = CbkClickerExport.Checked;
+            myWizard.ClickerSettings.ExportWaitlist = CbkClickerExportWaitlist.Checked;
+
             myWizard.MTGSettings.Export = CbkMTGExport.Checked;
+            myWizard.MTGSettings.ExportWaitlist = CbkMTGExportWaitlist.Checked;
+
             myWizard.ExcelClassSettings.Export = CbkExcelClassExport.Checked;
+            myWizard.ExcelClassSettings.ExportWaitlist = CbkExcelClassExportWaitlist.Checked;
+
             myWizard.ExcelRollSettings.Export = CbkExcelRollExport.Checked;
             myWizard.ExcelRollSettings.ExportLab = CbkExcelLabExport.Checked;
+            myWizard.ExcelRollSettings.ExportWaitlist = CbkExcelRollExportWaitlist.Checked;
+
             myWizard.OutlookSettings.Export = CbkOutlookExport.Checked;
+            myWizard.OutlookSettings.ExportWaitlist = CbkOutlookExportWaitlist.Checked;
+
             myWizard.WebAssignSettings.Export = CbkWebAssignExport.Checked;
+            myWizard.WebAssignSettings.ExportWaitlist = CbkWebAssignExportWaitlist.Checked;
+
             myWizard.WamapSettings.Export = CbkWamapExport.Checked;
+            myWizard.WamapSettings.ExportWaitlist = CbkWamapExportWaitlist.Checked;
+
             myWizard.UserSettings.OverWriteAll = ChkOverWrite.Checked;
         }
 
@@ -245,6 +269,7 @@ namespace InstructorBriefcaseExtractor
                     // Save user information to UserInfo
                     // Courses Panel
                     SaveExportSettings();
+                    myWizard.WriteUserSettingsToXML();
 
                     // Set all course NOT to export
                     myWizard.Courses.SetAllExport(false);
@@ -507,6 +532,7 @@ namespace InstructorBriefcaseExtractor
 
         public void ShowOptions()
         {
+            SaveExportSettings();
             Options options = new Options
             {
                 // set Form properties with a link to the Wizard variablles

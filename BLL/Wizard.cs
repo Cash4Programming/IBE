@@ -247,34 +247,34 @@ namespace InstructorBriefcaseExtractor.BLL
 
             try
             {
-                if (!File.Exists(UserSettings.MyDocuments + "GradeBook_Template_Percent.xls"))
+                if (!File.Exists(UserSettings.MyDocuments + "Gradebook_Group_33_Template_Percent.xls"))
                 {
-                    File.Copy(TemplatePath + "GradeBook_Template_Percent.xls", UserSettings.MyDocuments + "GradeBook_Template_Percent.xls");
+                    File.Copy(TemplatePath + "Gradebook_Group_33_Template_Percent.xls", UserSettings.MyDocuments + "Gradebook_Group_33_Template_Percent.xls");
                 }
                 else
                 {
-                    SendMessage(this, new Information("GradeBook_Template_Percent.xls - has been found"));
+                    SendMessage(this, new Information("Gradebook_Group_33_Template_Percent.xls - has been found"));
                 }
             }
             catch
             {
-                SendMessage(this, new Information("Could not find " + TemplatePath + "GradeBook_Template_Percent.xls"));
+                SendMessage(this, new Information("Could not find " + TemplatePath + "Gradebook_Group_33_Template_Percent.xls"));
             }
 
             try
             {
-                if (!File.Exists(UserSettings.MyDocuments + "GradeBook_Template_Points.xls"))
+                if (!File.Exists(UserSettings.MyDocuments + "Gradebook_Group_36_Template_Percent.xls"))
                 {
-                    File.Copy(TemplatePath + "GradeBook_Template_Points.xls", UserSettings.MyDocuments + "GradeBook_Template_Points.xls");
+                    File.Copy(TemplatePath + "Gradebook_Group_36_Template_Percent.xls", UserSettings.MyDocuments + "Gradebook_Group_36_Template_Percent.xls");
                 }
                 else
                 {
-                    SendMessage(this, new Information("GradeBook_Template_Points.xls - has been found"));
+                    SendMessage(this, new Information("Gradebook_Group_36_Template_Percent.xls - has been found"));
                 }
             }
             catch
             {
-                SendMessage(this, new Information("Could not find " + TemplatePath + "GradeBook_Template_Points.xls"));
+                SendMessage(this, new Information("Could not find " + TemplatePath + "Gradebook_Group_36_Template_Percent.xls"));
             }
             CurrentCompletedStep = WizardStep.VerifyTemplates;
         }
@@ -369,7 +369,7 @@ namespace InstructorBriefcaseExtractor.BLL
         }
         private void ExportExcel()
         {
-            if ((ExcelClassSettings.Export)||(ExcelRollSettings.Export))
+            if ((ExcelClassSettings.Export)||(ExcelRollSettings.Export) || (ExcelRollSettings.ExportLab))
             {
                 Excel Excel = new Excel(UserSettings);
                 

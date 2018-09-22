@@ -115,7 +115,16 @@ namespace InstructorBriefcaseExtractor.BLL
                             string Email = S.ExtractedName + " <" + S.Email + ">";
                             myRecipients.Add(Email);                            
                         }
-                        
+
+                        if (OutlookSettings.ExportWaitlist)
+                        {
+                            foreach (Student S in C.Waitlist)
+                            {
+                                string Email = S.ExtractedName + " <" + S.Email + ">";
+                                myRecipients.Add(Email);
+                            }
+                        }
+
                         if (!myRecipients.ResolveAll())
                         {
                             for (int i = 1; i < myRecipients.Count; i++)
