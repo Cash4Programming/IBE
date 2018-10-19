@@ -35,6 +35,7 @@ namespace InstructorBriefcaseExtractor
             this.RtbHTML = new System.Windows.Forms.RichTextBox();
             this.BtnCancel = new System.Windows.Forms.Button();
             this.PanelCourseRetrieved = new System.Windows.Forms.Panel();
+            this.LblOverWrite = new System.Windows.Forms.Label();
             this.GB3Wamap = new System.Windows.Forms.GroupBox();
             this.CbkWamapExportWaitlist = new System.Windows.Forms.CheckBox();
             this.CbkWamapExport = new System.Windows.Forms.CheckBox();
@@ -135,6 +136,7 @@ namespace InstructorBriefcaseExtractor
             // 
             // PanelCourseRetrieved
             // 
+            this.PanelCourseRetrieved.Controls.Add(this.LblOverWrite);
             this.PanelCourseRetrieved.Controls.Add(this.GB3Wamap);
             this.PanelCourseRetrieved.Controls.Add(this.GB3Clicker);
             this.PanelCourseRetrieved.Controls.Add(this.ChkOverWrite);
@@ -148,6 +150,15 @@ namespace InstructorBriefcaseExtractor
             this.PanelCourseRetrieved.Name = "PanelCourseRetrieved";
             this.PanelCourseRetrieved.Size = new System.Drawing.Size(522, 365);
             this.PanelCourseRetrieved.TabIndex = 27;
+            // 
+            // LblOverWrite
+            // 
+            this.LblOverWrite.AutoSize = true;
+            this.LblOverWrite.Location = new System.Drawing.Point(41, 324);
+            this.LblOverWrite.Name = "LblOverWrite";
+            this.LblOverWrite.Size = new System.Drawing.Size(75, 13);
+            this.LblOverWrite.TabIndex = 11;
+            this.LblOverWrite.Text = "without asking";
             // 
             // GB3Wamap
             // 
@@ -208,11 +219,11 @@ namespace InstructorBriefcaseExtractor
             // ChkOverWrite
             // 
             this.ChkOverWrite.AutoSize = true;
-            this.ChkOverWrite.Location = new System.Drawing.Point(8, 336);
+            this.ChkOverWrite.Location = new System.Drawing.Point(17, 303);
             this.ChkOverWrite.Name = "ChkOverWrite";
-            this.ChkOverWrite.Size = new System.Drawing.Size(196, 17);
+            this.ChkOverWrite.Size = new System.Drawing.Size(125, 17);
             this.ChkOverWrite.TabIndex = 9;
-            this.ChkOverWrite.Text = "Replace existing files without asking";
+            this.ChkOverWrite.Text = "Replace existing files";
             this.ChkOverWrite.UseVisualStyleBackColor = true;
             // 
             // GB3WebAssign
@@ -605,6 +616,7 @@ namespace InstructorBriefcaseExtractor
         internal System.Windows.Forms.CheckBox CbkWebAssignExportWaitlist;
         internal System.Windows.Forms.CheckBox CbkOutlookExportWaitlist;
         internal System.Windows.Forms.CheckBox CbkMTGExportWaitlist;
+        private System.Windows.Forms.Label LblOverWrite;
     }
 }
 
