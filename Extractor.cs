@@ -139,6 +139,7 @@ namespace InstructorBriefcaseExtractor
             //
             // if there are no quarter let an error occur
             CmbQuarterName.Text = myWizard.CurrentQuarter();// CmbQuarterName.Items[0].ToString();
+            lblYRQ.Text = myWizard.Quarters[CmbQuarterName.Text].YRQ;
         }
 
         private void SetCoursePanalValues()
@@ -569,6 +570,11 @@ namespace InstructorBriefcaseExtractor
         {
             myWizard.WriteToXML();
             myWizard.Email_Usage();            
+        }
+
+        private void CmbQuarterName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            lblYRQ.Text = myWizard.Quarters[CmbQuarterName.Text].YRQ;
         }
     }
 }

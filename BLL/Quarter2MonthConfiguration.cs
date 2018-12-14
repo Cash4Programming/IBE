@@ -114,7 +114,17 @@ namespace InstructorBriefcaseExtractor.BLL
             if (StartYear > 2259) { throw new Exception("YRQENCODE must end before the year  2259."); }
 
             int ones = StartYear % 10;
-            int YRQThirdChari = ones + 1;
+            int YRQThirdChari;
+            if (Quarter < 3)
+            {
+                YRQThirdChari = ones + 1;
+            }
+            else
+            {
+                YRQThirdChari = ones;
+                ones -= 1;
+            }
+            
             if (YRQThirdChari > 9)
             {
                 YRQThirdChari = 0;
