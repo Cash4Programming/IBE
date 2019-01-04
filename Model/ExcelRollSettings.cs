@@ -15,8 +15,20 @@ namespace InstructorBriefcaseExtractor.Model
         public string FirstNameColumnLetter { get; set; }
         public string MondayDateCell { get; set; }
         public string FirstMondayDayCell { get; set; }
-        public DateTime FirstDay { get; set; }
-        public DateTime FirstMondayDay { get; set; }
+        private DateTime _FirstDay;
+        public DateTime FirstDay {
+            get { return _FirstDay; }
+            set {
+                _FirstDay = value;
+                if (_FirstDay.DayOfWeek == DayOfWeek.Monday) { FirstMondayDay = _FirstDay; }
+                if (_FirstDay.DayOfWeek == DayOfWeek.Tuesday) { FirstMondayDay = _FirstDay.AddDays(-1); }
+                if (_FirstDay.DayOfWeek == DayOfWeek.Wednesday) { FirstMondayDay = _FirstDay.AddDays(-2); }
+                if (_FirstDay.DayOfWeek == DayOfWeek.Thursday) { FirstMondayDay = _FirstDay.AddDays(-3); }
+                if (_FirstDay.DayOfWeek == DayOfWeek.Friday) { FirstMondayDay = _FirstDay.AddDays(-4); }
+            }
+
+        }
+        public DateTime FirstMondayDay { get; private set; }
 
         public ExcelRollSettings Clone()
         {

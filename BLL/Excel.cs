@@ -797,7 +797,7 @@ namespace InstructorBriefcaseExtractor.BLL
                         }
                     }
                     CellColumn = CellLetterToRow(ColumnLetters);
-                    string CellValue = ExcelRollSettings.FirstDay.ToShortDateString();
+                    string CellValue = ExcelRollSettings.FirstMondayDay.ToShortDateString();
                     ExcelRollWorksheet.Cells[CellRow, CellColumn] = CellValue;
 
 
@@ -823,7 +823,7 @@ namespace InstructorBriefcaseExtractor.BLL
                         }
                     }
                     CellColumn = CellLetterToRow(ColumnLetters);
-                    // CellValue has not changed
+                    CellValue = ExcelRollSettings.FirstMondayDay.ToShortDateString();
                     ExcelRollWorksheet.Cells[CellRow, CellColumn] = CellValue; 
 
                     #endregion

@@ -234,33 +234,25 @@ namespace InstructorBriefcaseExtractor.BLL
             int year = DateTime.Now.Year;
             int month = DateTime.Now.Month;
             
-
             int SummerFallYear = 0;
             int WinterSpringYear = 0;
 
-            if ((1 <= month) && (month <= 6))
+            if ((1 <= month) && (month <= 5))
             {
                 WinterSpringYear = year;
                 SummerFallYear = year - 1;
+
+                if (month < Quarter2Month.SpringMonth) return "Winter " + WinterSpringYear.ToString();
+                return "Spring " + WinterSpringYear.ToString();
             }
             else
             {
                 SummerFallYear = year;
                 WinterSpringYear = year + 1;
-            }
-
-            if (Quarter2Month.WinterMonth == 1)
-            {
-                if ((Quarter2Month.WinterMonth <= month) && (month < Quarter2Month.SpringMonth)) return "Winter " + WinterSpringYear.ToString();
-            }
-            else
-            {
+                if (month < Quarter2Month.FallMonth) return "Summer " + WinterSpringYear.ToString();
                 if (Quarter2Month.WinterMonth == month) return "Winter " + WinterSpringYear.ToString();
-            }
-            if ((Quarter2Month.SpringMonth <= month) && (month < Quarter2Month.SummerMonth)) return "Spring " + WinterSpringYear.ToString();
-            if ((Quarter2Month.SummerMonth <= month) && (month < Quarter2Month.FallMonth)) return "Summer " + WinterSpringYear.ToString();
-
-            return "Fall " + SummerFallYear.ToString();          
+                return "Fall " + SummerFallYear.ToString();
+            }         
         }
     }
 }
