@@ -73,6 +73,7 @@ namespace InstructorBriefcaseExtractor.Model
 
         private void ProcessStudentsFromHTML(string RawHTML, OptionHeaders HeaderNames)
         {
+            RawHTML = RawHTML.Replace("<BR>", " ").Replace("<BR/>", " ").Replace("<br>", " ").Replace("<br/>", " ");
             int HTMLStart = RawHTML.IndexOf(JavaStudentListVariable);
             int Count = 0;
             string temp = "";
@@ -82,7 +83,7 @@ namespace InstructorBriefcaseExtractor.Model
             do
             {
                 int StudentStart = RawHTML.IndexOf("(", HTMLStart);
-                int StudentEnd = RawHTML.IndexOf(")", StudentStart);
+                int StudentEnd = RawHTML.IndexOf(");", StudentStart+45); // added ; on 12-16-2019 to prevent the ending to be accepted as part of the name
                 string Student = RawHTML.Substring(StudentStart, StudentEnd - StudentStart);
                 //stuLine( sid, name, enrCredit, gr, Opt1, Opt2, Opt3 )
                 StudentStart = Student.IndexOf("'") + 1;

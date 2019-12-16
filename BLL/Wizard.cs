@@ -76,7 +76,7 @@ namespace InstructorBriefcaseExtractor.BLL
 
         #endregion
 
-        private void ReadFromXML(string Version)
+        private void ReadFromXML()
         {
             UserConfiguration UserConfiguration = new UserConfiguration(UserSettings);
             this.UserSettings = UserConfiguration.Load();
@@ -147,6 +147,7 @@ namespace InstructorBriefcaseExtractor.BLL
             Options options = new Options(UserSettings);
 
             options.ShowDialog();
+            options.Dispose();
         }
 
         public void WriteUserSettingsToXML()
@@ -182,8 +183,8 @@ namespace InstructorBriefcaseExtractor.BLL
             if (UserSettings.Version == "") { UserSettings.Version = "1"; }
 
             // Load All configuration data
-            UserConfiguration UserConfiguration = new UserConfiguration(UserSettings);
-            ReadFromXML(UserSettings.Version);
+            //UserConfiguration UserConfiguration = new UserConfiguration(UserSettings);
+            ReadFromXML();
 
             // Select College
             Colleges = new Colleges();
@@ -317,7 +318,20 @@ namespace InstructorBriefcaseExtractor.BLL
                 // Listen for events
                 myCourses.MessageResults += new InformationalMessage(SendMessage);
                 SendMessage(this, new Information("Requesting course(s) from Website."));
-                myCourses.AddFromCIS(MyLogin, ExcelClassSettings, ActionUrl);
+                try
+                {
+                    myCourses.AddFromCIS(MyLogin, ExcelClassSettings, ActionUrl);
+                }
+                catch (Exception ex)
+                {
+                    if (myCourses.Count() == 0)
+                    {
+                        string temp = ex.Message;
+                        throw;
+                    }
+                        // otherwise continue to process what was found
+                }
+                
                 
                 // Are there any courses?
                 if (myCourses.Count() > 0)
@@ -503,7 +517,8 @@ namespace InstructorBriefcaseExtractor.BLL
                         Body += "\r\n\r\nNext email date will be on ar after: " + Properties.Settings.Default.EmailDateAfter.ToShortDateString() + ".";
                         if (MyOutlook != null)
                         {
-                            if (!MyOutlook.CreateEmail(Properties.Settings.Default.EmailTo, Subject, Body))
+                            bool Successful = MyOutlook.CreateEmail(Properties.Settings.Default.EmailTo, Subject, Body);
+                            if (!Successful)
                             {
                                 // Fall back if outlook does not work
                                 Mail.EmailDeveloper(Properties.Settings.Default.EmailTo, Subject, Body);

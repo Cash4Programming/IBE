@@ -122,7 +122,7 @@ namespace InstructorBriefcaseExtractor.BLL
             else
             {
                 YRQThirdChari = ones;
-                ones -= 1;
+                if (ones == 0) { ones = 9; } else { ones -= 1; }
             }
             
             if (YRQThirdChari > 9)
@@ -204,8 +204,8 @@ namespace InstructorBriefcaseExtractor.BLL
             Quarters MyQuarters = new Quarters();
             int year = DateTime.Now.Year;
             int month = DateTime.Now.Month;
-            int SummerFallYear = 0;
-            int WinterSpringYear = 0;
+            int SummerFallYear;
+            int WinterSpringYear;
 
             if ((1 <= month) && (month <= 6))
             {
@@ -234,8 +234,8 @@ namespace InstructorBriefcaseExtractor.BLL
             int year = DateTime.Now.Year;
             int month = DateTime.Now.Month;
             
-            int SummerFallYear = 0;
-            int WinterSpringYear = 0;
+            int SummerFallYear;
+            int WinterSpringYear;
 
             if ((1 <= month) && (month <= 5))
             {

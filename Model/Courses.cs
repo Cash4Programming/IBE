@@ -83,12 +83,12 @@ namespace InstructorBriefcaseExtractor.Model
             string InstructorName = EV.FromJavaScript(HTTPCourses, JavaInstructorVariable, "'", "'");
             SendMessage(this, new Information("Found Instructor Name " + InstructorName));
 
-            string RawHTML = "";
-            string HTTPRequestString = "";
-            String CourseName = "";
-            String ItemNumber = "";
-            int Start = 0;
-            int End = 0;
+            string RawHTML;
+            string HTTPRequestString;
+            String CourseName;
+            String ItemNumber;
+            int Start;
+            int End;
             int HTTPStart = HTTPCourses.IndexOf(JavaRosterVariable);
             if (HTTPStart >= 0)
             {

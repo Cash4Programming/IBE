@@ -40,6 +40,7 @@ namespace InstructorBriefcaseExtractor
             InstructorBriefcaseExtractor.Model.FileInformation FE = (InstructorBriefcaseExtractor.Model.FileInformation)e;
             FileExistsDialog myDialog = new FileExistsDialog(FE);
             myDialog.ShowDialog(this);
+            myDialog.Dispose();
         }
 
         // Function to start and stop listening for events.
@@ -223,7 +224,7 @@ namespace InstructorBriefcaseExtractor
 
             myWizard.UserSettings.OverWriteAll = ChkOverWrite.Checked;
         }
-
+                
         private void BackPreStepCleanUp()
         {
             switch (myWizard.CompletedStep)
@@ -557,6 +558,7 @@ namespace InstructorBriefcaseExtractor
                 myWizard.WriteToXML();
                 SetCoursePanalValues();
             }
+            options.Dispose();
         }
 
         private void ConfigurationToolStripMenuItem_Click(object sender, EventArgs e)
@@ -568,8 +570,7 @@ namespace InstructorBriefcaseExtractor
 
         private void Extractor_FormClosed(object sender, FormClosedEventArgs e)
         {
-            myWizard.WriteToXML();
-            myWizard.Email_Usage();            
+            myWizard.WriteToXML();                      
         }
 
         private void CmbQuarterName_SelectedIndexChanged(object sender, EventArgs e)

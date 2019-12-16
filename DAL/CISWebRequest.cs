@@ -184,7 +184,11 @@ namespace InstructorBriefcaseExtractor.DAL
             catch
             {
                 myWebRequest = null;
-                throw;  // rethrow
+                if(RetrieveHTMLPage == "")
+                {
+                    throw;  // rethrow
+                }
+                // otherwise return what was found
             }
 
             return RetrieveHTMLPage;

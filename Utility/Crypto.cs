@@ -88,6 +88,10 @@ namespace InstructorBriefcaseExtractor.Utility
                 byte[] returnval = ProtectedData.Unprotect(secret, null, DataProtectionScope.LocalMachine);                
                 return GetString(returnval);
             }
+            catch (CryptographicException)
+            {
+                return "";
+            }
             catch (Exception Ex)
             {
                 string Error = Ex.Message + "\r\n" + Ex.InnerException + "\r\n" + Ex.Data + "\r\n" + Ex.Source;

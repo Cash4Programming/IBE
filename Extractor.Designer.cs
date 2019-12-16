@@ -61,6 +61,8 @@ namespace InstructorBriefcaseExtractor
             this.ClbCourses = new System.Windows.Forms.CheckedListBox();
             this.LblCourses = new System.Windows.Forms.Label();
             this.PanelQuarterFound = new System.Windows.Forms.Panel();
+            this.lblYRQName = new System.Windows.Forms.Label();
+            this.lblYRQ = new System.Windows.Forms.Label();
             this.LblQuarter = new System.Windows.Forms.Label();
             this.CmbQuarterName = new System.Windows.Forms.ComboBox();
             this.LblAddress2 = new System.Windows.Forms.Label();
@@ -77,8 +79,6 @@ namespace InstructorBriefcaseExtractor
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ConfigurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.lblYRQ = new System.Windows.Forms.Label();
-            this.lblYRQName = new System.Windows.Forms.Label();
             this.PanelCourseRetrieved.SuspendLayout();
             this.GB3Wamap.SuspendLayout();
             this.GB3Clicker.SuspendLayout();
@@ -401,6 +401,24 @@ namespace InstructorBriefcaseExtractor
             this.PanelQuarterFound.Size = new System.Drawing.Size(513, 293);
             this.PanelQuarterFound.TabIndex = 28;
             // 
+            // lblYRQName
+            // 
+            this.lblYRQName.AutoSize = true;
+            this.lblYRQName.Location = new System.Drawing.Point(123, 163);
+            this.lblYRQName.Name = "lblYRQName";
+            this.lblYRQName.Size = new System.Drawing.Size(30, 13);
+            this.lblYRQName.TabIndex = 21;
+            this.lblYRQName.Text = "YRQ";
+            // 
+            // lblYRQ
+            // 
+            this.lblYRQ.AutoSize = true;
+            this.lblYRQ.Location = new System.Drawing.Point(248, 169);
+            this.lblYRQ.Name = "lblYRQ";
+            this.lblYRQ.Size = new System.Drawing.Size(30, 13);
+            this.lblYRQ.TabIndex = 20;
+            this.lblYRQ.Text = "x000";
+            // 
             // LblQuarter
             // 
             this.LblQuarter.Location = new System.Drawing.Point(121, 140);
@@ -523,7 +541,7 @@ namespace InstructorBriefcaseExtractor
             // ExitToolStripMenuItem
             // 
             this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
-            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
+            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(93, 22);
             this.ExitToolStripMenuItem.Text = "Exit";
             this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
@@ -533,24 +551,6 @@ namespace InstructorBriefcaseExtractor
             this.ConfigurationToolStripMenuItem.Size = new System.Drawing.Size(93, 20);
             this.ConfigurationToolStripMenuItem.Text = "Configuration";
             this.ConfigurationToolStripMenuItem.Click += new System.EventHandler(this.ConfigurationToolStripMenuItem_Click);
-            // 
-            // lblYRQ
-            // 
-            this.lblYRQ.AutoSize = true;
-            this.lblYRQ.Location = new System.Drawing.Point(248, 169);
-            this.lblYRQ.Name = "lblYRQ";
-            this.lblYRQ.Size = new System.Drawing.Size(30, 13);
-            this.lblYRQ.TabIndex = 20;
-            this.lblYRQ.Text = "x000";
-            // 
-            // lblYRQName
-            // 
-            this.lblYRQName.AutoSize = true;
-            this.lblYRQName.Location = new System.Drawing.Point(123, 163);
-            this.lblYRQName.Name = "lblYRQName";
-            this.lblYRQName.Size = new System.Drawing.Size(30, 13);
-            this.lblYRQName.TabIndex = 21;
-            this.lblYRQName.Text = "YRQ";
             // 
             // Extractor
             // 
