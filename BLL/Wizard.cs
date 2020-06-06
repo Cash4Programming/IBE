@@ -514,6 +514,7 @@ namespace InstructorBriefcaseExtractor.BLL
                     if (DateTime.Now >= NextEmailDate)
                     {
                         Properties.Settings.Default.EmailDateAfter = NextEmailDate.AddDays(60);
+                        Properties.Settings.Default.Save();
                         Body += "\r\n\r\nNext email date will be on ar after: " + Properties.Settings.Default.EmailDateAfter.ToShortDateString() + ".";
                         if (MyOutlook != null)
                         {

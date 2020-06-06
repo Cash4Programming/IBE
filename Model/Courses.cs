@@ -92,10 +92,23 @@ namespace InstructorBriefcaseExtractor.Model
             int HTTPStart = HTTPCourses.IndexOf(JavaRosterVariable);
             if (HTTPStart >= 0)
             {
+                int[] ArrayStart = new int[10];  // list of starting points for courses
+                int[] ArrayEnd = new int[10];    // list of ending points for courses
 
+                int CourseIndex = 0;             // number of courses
+                
                 do
                 {
-                    End = HTTPCourses.IndexOf(")", HTTPStart);
+                    ArrayStart[CourseIndex] = HTTPStart;
+                    ArrayEnd[CourseIndex] = HTTPCourses.IndexOf(")", HTTPStart);
+                    CourseIndex++;
+                    HTTPStart = HTTPCourses.IndexOf(JavaRosterVariable, HTTPStart + 1);
+                } while ((HTTPStart > 0)&&(CourseIndex<11));
+
+                for (int i = 0; i < CourseIndex; i++)
+                {
+                    HTTPStart = ArrayStart[i];
+                    End = ArrayEnd[i];
                     String OneCourse = HTTPCourses.Substring(HTTPStart, End - HTTPStart);
                     Start = OneCourse.IndexOf("'") + 1;  // don't include the '
                     End = OneCourse.IndexOf("'", Start + 1);
@@ -110,15 +123,36 @@ namespace InstructorBriefcaseExtractor.Model
                     // get request String
                     CISCourse myCISCourses = new CISCourse(ItemNumber, ticketvalue, MyLogin.Quarter.YRQ);
                     HTTPRequestString = myCISCourses.HTTPRequestString;
+                    try
+                    {
+                        // retrieve class data
+                        RawHTML = myWebRequest.RetrieveHTMLPage(ActionURL, HTTPRequestString, CISWebRequest.HTMLRequestType.POST, 5000);
+                        
+                    }
+                    catch (Exception Ex)
+                    {                        
+                        string ErrorMessage = Ex.Message;
+                        if (ErrorMessage.IndexOf("403", 0)>0) {
+                            // Error forbidden
+                            SendMessage(this, new Information(CourseName + " " + ItemNumber + " " + Ex.Message));
 
-                    // retrieve class data
-                    RawHTML = myWebRequest.RetrieveHTMLPage(ActionURL, HTTPRequestString, CISWebRequest.HTMLRequestType.POST, 5000);
+                            // try again
+                            RawHTML = myWebRequest.RetrieveHTMLPage(ActionURL, HTTPRequestString, CISWebRequest.HTMLRequestType.POST, 5000);
+                        }
+                        else
+                        {
+                            // fail
+                            throw;
+                        }
+                            
+                    }
+
                     SendMessage(this, new Information(RawHTML));
 
                     this.Add(RawHTML, InstructorName, CourseName, ItemNumber, MyLogin.Quarter.YRQ, MyLogin.Quarter.Name, ExcelClassSettings);
 
-                    HTTPStart = HTTPCourses.IndexOf(JavaRosterVariable, HTTPStart + 1);
-                } while (HTTPStart > 0);
+
+                }
             }
             else
             {
