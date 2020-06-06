@@ -13,7 +13,7 @@ namespace InstructorBriefcaseExtractor
 {
     public partial class FileExistsDialog : Form
     {
-        InstructorBriefcaseExtractor.Model.FileInformation myFE;
+        private readonly InstructorBriefcaseExtractor.Model.FileInformation myFE;
         public FileExistsDialog(InstructorBriefcaseExtractor.Model.FileInformation FE)
         {
             InitializeComponent();
@@ -33,25 +33,25 @@ namespace InstructorBriefcaseExtractor
             
         }
 
-        private void btnCancelAll_Click(object sender, EventArgs e)
+        private void BtnCancelAll_Click(object sender, EventArgs e)
         {
             myFE.CancelALLExport = true;
             this.Close();
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
+        private void BtnCancel_Click(object sender, EventArgs e)
         {
             myFE.CancelExport = true;
             this.Close();
         }
 
-        private void btnOverWriteAll_Click(object sender, EventArgs e)
+        private void BtnOverWriteAll_Click(object sender, EventArgs e)
         {
             myFE.OverWriteAll = true;
             this.Close();
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private void BtnSave_Click(object sender, EventArgs e)
         {
             // split the filename apart
 
@@ -65,7 +65,7 @@ namespace InstructorBriefcaseExtractor
             //btnOpenFile.PerformClick();
         }
 
-        private void btnOpenFile_Click(object sender, EventArgs e)
+        private void BtnOpenFile_Click(object sender, EventArgs e)
         {
             openFileDialog1.InitialDirectory = myFE.OldDirectory;
 

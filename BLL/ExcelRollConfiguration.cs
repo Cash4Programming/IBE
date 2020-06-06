@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 using InstructorBriefcaseExtractor.Model;
 using InstructorBriefcaseExtractor.Utility;
@@ -88,7 +89,7 @@ namespace InstructorBriefcaseExtractor.BLL
             catch
             {
                 ExcellRollSettings.Export = false;
-                XML.XMLWriteFile(xmlEXCELNodeNameLocation, ExportKey, ExcellRollSettings.Export.ToString());
+                XML.XMLWriteFile(xmlEXCELNodeNameLocation, ExportKey, ExcellRollSettings.Export.ToString(CultureInfo.CurrentCulture));
             }
 
             try
@@ -98,7 +99,7 @@ namespace InstructorBriefcaseExtractor.BLL
             catch
             {
                 ExcellRollSettings.ExportWaitlist = false;
-                XML.XMLWriteFile(xmlEXCELNodeNameLocation, ExportWaitListKey, ExcellRollSettings.ExportWaitlist.ToString());
+                XML.XMLWriteFile(xmlEXCELNodeNameLocation, ExportWaitListKey, ExcellRollSettings.ExportWaitlist.ToString(CultureInfo.CurrentCulture));
             }
 
 
@@ -109,7 +110,7 @@ namespace InstructorBriefcaseExtractor.BLL
             catch
             {
                 ExcellRollSettings.ExportLab = false;
-                XML.XMLWriteFile(xmlEXCELNodeNameLocation, ExportLabKey, ExcellRollSettings.ExportLab.ToString());
+                XML.XMLWriteFile(xmlEXCELNodeNameLocation, ExportLabKey, ExcellRollSettings.ExportLab.ToString(CultureInfo.CurrentCulture));
             }
 
             try
@@ -119,7 +120,7 @@ namespace InstructorBriefcaseExtractor.BLL
             catch
             {
                 ExcellRollSettings.FirstClass = ClassIncrementDefault;
-                XML.XMLWriteFile(xmlEXCELNodeNameLocation, ClassIncrementKey, ExcellRollSettings.ClassIncrement.ToString());
+                XML.XMLWriteFile(xmlEXCELNodeNameLocation, ClassIncrementKey, ExcellRollSettings.ClassIncrement.ToString(CultureInfo.CurrentCulture));
             }
 
             try
@@ -129,7 +130,7 @@ namespace InstructorBriefcaseExtractor.BLL
             catch
             {
                 ExcellRollSettings.FirstClass = FirstClassDefault;
-                XML.XMLWriteFile(xmlEXCELNodeNameLocation, FirstClassKey, ExcellRollSettings.FirstClass.ToString());
+                XML.XMLWriteFile(xmlEXCELNodeNameLocation, FirstClassKey, ExcellRollSettings.FirstClass.ToString(CultureInfo.CurrentCulture));
             }
 
             ExcellRollSettings.ClassNameColumnLetter = XML.XMLReadFile(xmlEXCELNodeNameLocation, ClassNameColumnLetterKey);
@@ -167,7 +168,7 @@ namespace InstructorBriefcaseExtractor.BLL
             //catch
             //{
             //    ExcellRollSettings.Height = HeightDefault;
-            //    XML.XMLWriteFile(xmlEXCELNodeNameLocation, HeightKey, ExcellRollSettings.Height.ToString());
+            //    XML.XMLWriteFile(xmlEXCELNodeNameLocation, HeightKey, ExcellRollSettings.Height.ToString(CultureInfo.CurrentCulture));
             //}
 
             ExcellRollSettings.LastNameColumnLetter = XML.XMLReadFile(xmlEXCELNodeNameLocation, LastNameColumnLetterKey);
@@ -191,16 +192,16 @@ namespace InstructorBriefcaseExtractor.BLL
         {
             XMLhelper XML = new XMLhelper(UserSettings);
 
-            XML.XMLWriteFile(xmlEXCELNodeNameLocation, ExportKey, ExcellRollSettings.Export.ToString());
-            XML.XMLWriteFile(xmlEXCELNodeNameLocation, ExportWaitListKey, ExcellRollSettings.ExportWaitlist.ToString());
-            XML.XMLWriteFile(xmlEXCELNodeNameLocation, ExportLabKey, ExcellRollSettings.ExportLab.ToString());
-            XML.XMLWriteFile(xmlEXCELNodeNameLocation, ClassIncrementKey, ExcellRollSettings.ClassIncrement.ToString());
+            XML.XMLWriteFile(xmlEXCELNodeNameLocation, ExportKey, ExcellRollSettings.Export.ToString(CultureInfo.CurrentCulture));
+            XML.XMLWriteFile(xmlEXCELNodeNameLocation, ExportWaitListKey, ExcellRollSettings.ExportWaitlist.ToString(CultureInfo.CurrentCulture));
+            XML.XMLWriteFile(xmlEXCELNodeNameLocation, ExportLabKey, ExcellRollSettings.ExportLab.ToString(CultureInfo.CurrentCulture));
+            XML.XMLWriteFile(xmlEXCELNodeNameLocation, ClassIncrementKey, ExcellRollSettings.ClassIncrement.ToString(CultureInfo.CurrentCulture));
             XML.XMLWriteFile(xmlEXCELNodeNameLocation, ClassNameColumnLetterKey, ExcellRollSettings.ClassNameColumnLetter);
-            XML.XMLWriteFile(xmlEXCELNodeNameLocation, FirstClassKey, ExcellRollSettings.FirstClass.ToString());
+            XML.XMLWriteFile(xmlEXCELNodeNameLocation, FirstClassKey, ExcellRollSettings.FirstClass.ToString(CultureInfo.CurrentCulture));
             XML.XMLWriteFile(xmlEXCELNodeNameLocation, FirstMondayDayCellKey, ExcellRollSettings.FirstMondayDayCell);
             XML.XMLWriteFile(xmlEXCELNodeNameLocation, FirstNameColumnLetterKey, ExcellRollSettings.FirstNameColumnLetter);
             XML.XMLWriteFile(xmlEXCELNodeNameLocation, HeaderKey, ExcellRollSettings.Header);
-            //XML.XMLWriteFile(xmlEXCELNodeNameLocation, HeightKey, ExcellRollSettings.Height.ToString());
+            //XML.XMLWriteFile(xmlEXCELNodeNameLocation, HeightKey, ExcellRollSettings.Height.ToString(CultureInfo.CurrentCulture));
             XML.XMLWriteFile(xmlEXCELNodeNameLocation, LastNameColumnLetterKey, ExcellRollSettings.LastNameColumnLetter);
             XML.XMLWriteFile(xmlEXCELNodeNameLocation, MondayDateCellKey, ExcellRollSettings.MondayDateCell);
 

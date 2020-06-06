@@ -8,7 +8,7 @@ namespace InstructorBriefcaseExtractor.Utility
     // This is used to hide the username and pin when it is saved to disk
     public class Crypto
     {
-        UserSettings MyUserSettings;
+        private readonly UserSettings MyUserSettings;
         public Crypto(UserSettings UserSettings)
         {
             MyUserSettings = UserSettings;
@@ -112,7 +112,7 @@ namespace InstructorBriefcaseExtractor.Utility
         // this needs to be broken down so these key would be much harder to find.
         // 01/13/2008 MPJ
         // Generated from https://www.grc.com/passwords.htm
-        private static String _GenericKey1 = "TW3vQuKmB6rZflRmevZFJvbEOvNF877IiCUq142B7YTLwcEKXNUSEOlPkBN4qe2";
+        private readonly static String _GenericKey1 = "TW3vQuKmB6rZflRmevZFJvbEOvNF877IiCUq142B7YTLwcEKXNUSEOlPkBN4qe2";
 
         private String GenericKey()
         {

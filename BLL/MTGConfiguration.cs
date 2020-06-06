@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -44,7 +45,7 @@ namespace InstructorBriefcaseExtractor.BLL
             catch
             {
                 MTGSettings.Export = false;
-                XML.XMLWriteFile(xmlMTGNodeNameLocation, ExportKey, MTGSettings.Export.ToString());
+                XML.XMLWriteFile(xmlMTGNodeNameLocation, ExportKey, MTGSettings.Export.ToString(CultureInfo.CurrentCulture));
             }
 
             try
@@ -54,7 +55,7 @@ namespace InstructorBriefcaseExtractor.BLL
             catch
             {
                 MTGSettings.Underscore = true;
-                XML.XMLWriteFile(xmlMTGNodeNameLocation, UnderscoreKey, MTGSettings.Underscore.ToString());
+                XML.XMLWriteFile(xmlMTGNodeNameLocation, UnderscoreKey, MTGSettings.Underscore.ToString(CultureInfo.CurrentCulture));
             }
 
             return MTGSettings;
@@ -65,8 +66,8 @@ namespace InstructorBriefcaseExtractor.BLL
             XMLhelper XML = new XMLhelper(UserSettings);
 
             XML.XMLWriteFile(xmlMTGNodeNameLocation, DirectoryKey, MTGSettings.Directory);
-            XML.XMLWriteFile(xmlMTGNodeNameLocation, ExportKey, MTGSettings.Export.ToString());
-            XML.XMLWriteFile(xmlMTGNodeNameLocation, UnderscoreKey, MTGSettings.Underscore.ToString());
+            XML.XMLWriteFile(xmlMTGNodeNameLocation, ExportKey, MTGSettings.Export.ToString(CultureInfo.CurrentCulture));
+            XML.XMLWriteFile(xmlMTGNodeNameLocation, UnderscoreKey, MTGSettings.Underscore.ToString(CultureInfo.CurrentCulture));
         }
 
     }

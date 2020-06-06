@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Text;
 using System.IO;
 
@@ -61,7 +62,7 @@ namespace InstructorBriefcaseExtractor.BLL
             // DESCRIPTION
             //    This procedure exports to an Clicker output file
             //==========================================================            
-            bool DeleteFileError = false;
+            bool DeleteFileError;
 
             // Verify that MTG is to be exported
             if (!ClickerSettings.Export) { return; }
@@ -84,20 +85,20 @@ namespace InstructorBriefcaseExtractor.BLL
                         {
                             if (ClickerSettings.SelectedValue == 1)
                             {
-                                SB.Append((i + 1).ToString()).Append(". ");
+                                SB.Append((i + 1).ToString(CultureInfo.CurrentCulture)).Append(". ");
                                 Student S = C.Students[i];
                                 SB.Append(S.LastName + ",");    // Student Last Name
                                 SB.Append(S.FirstName + ",");   // Student First Name
-                                SB.Append(S.LastName).Append(S.FirstName[0]).Append((i + 1).ToString());         // UniqueID
+                                SB.Append(S.LastName).Append(S.FirstName[0]).Append((i + 1).ToString(CultureInfo.CurrentCulture));         // UniqueID
                             }
                             else if (ClickerSettings.SelectedValue == 2)
                             {
                                 // need to define the format
-                                SB.Append((i + 1).ToString()).Append(". ");
+                                SB.Append((i + 1).ToString(CultureInfo.CurrentCulture)).Append(". ");
                                 Student S = C.Students[i];
                                 SB.Append(S.LastName + ",");    // Student Last Name
                                 SB.Append(S.FirstName + ",");   // Student First Name
-                                SB.Append(S.LastName).Append(S.FirstName[0]).Append((i + 1).ToString());         // UniqueID
+                                SB.Append(S.LastName).Append(S.FirstName[0]).Append((i + 1).ToString(CultureInfo.CurrentCulture));         // UniqueID
                             }
                             if (i < StudentCount) { SB.Append("\r\n"); }
                         }
@@ -113,18 +114,18 @@ namespace InstructorBriefcaseExtractor.BLL
                                 Student S = C.Waitlist[i];
                                 if (ClickerSettings.SelectedValue == 1)
                                 {
-                                    SB.Append((j + 1).ToString()).Append(". ");
+                                    SB.Append((j + 1).ToString(CultureInfo.CurrentCulture)).Append(". ");
                                     SB.Append(S.LastName + ",");    // Student Last Name
                                     SB.Append(S.FirstName + ",");   // Student First Name
-                                    SB.Append(S.LastName).Append(S.FirstName[0]).Append((j + 1).ToString());         // UniqueID
+                                    SB.Append(S.LastName).Append(S.FirstName[0]).Append((j + 1).ToString(CultureInfo.CurrentCulture));         // UniqueID
                                 }
                                 else if (ClickerSettings.SelectedValue == 2)
                                 {
                                     // need to define the format
-                                    SB.Append((j + 1).ToString()).Append(". ");
+                                    SB.Append((j + 1).ToString(CultureInfo.CurrentCulture)).Append(". ");
                                     SB.Append(S.LastName + ",");    // Student Last Name
                                     SB.Append(S.FirstName + ",");   // Student First Name
-                                    SB.Append(S.LastName).Append(S.FirstName[0]).Append((j + 1).ToString());         // UniqueID
+                                    SB.Append(S.LastName).Append(S.FirstName[0]).Append((j + 1).ToString(CultureInfo.CurrentCulture));         // UniqueID
                                 }
                                 if (i < WaitlistCount) { SB.Append("\r\n"); }
                             }

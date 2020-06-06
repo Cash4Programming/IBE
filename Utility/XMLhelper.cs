@@ -30,7 +30,7 @@ namespace InstructorBriefcaseExtractor.Utility
 
         public string XMLReadFile(string NodeLocation, string NodeName)
         {
-            string XmlRoot = "";
+            string XmlRoot;
             if (NodeLocation == xmlUserNameLocation)
             {
                 XmlRoot = xmlRootUserLocation;
@@ -93,7 +93,7 @@ namespace InstructorBriefcaseExtractor.Utility
 
         public void XMLWriteFile(string NodeLocation, string NodeName, string NodeValue)
         {
-            string XmlRoot = "";
+            string XmlRoot;
             if (NodeLocation == xmlUserNameLocation)
             {
                 XmlRoot = xmlRootUserLocation;
@@ -217,7 +217,7 @@ namespace InstructorBriefcaseExtractor.Utility
             }
             finally
             {
-                if (m_xmld != null) { m_xmld = null; }
+                //if (m_xmld != null) { m_xmld = null; }
             }
         }
 

@@ -32,19 +32,21 @@ namespace InstructorBriefcaseExtractor.Model
 
         public ExcelRollSettings Clone()
         {
-            ExcelRollSettings Clone = new ExcelRollSettings();
-            Clone.Export = Export;
-            Clone.ExportLab = ExportLab;
-            Clone.Header = Header;
-            Clone.FirstClass = FirstClass;
-            Clone.ClassIncrement = ClassIncrement;
-            Clone.ClassNameColumnLetter = ClassNameColumnLetter;
-            Clone.LastNameColumnLetter = LastNameColumnLetter;
-            Clone.FirstNameColumnLetter = FirstNameColumnLetter;
-            Clone.MondayDateCell = MondayDateCell;
-            Clone.FirstMondayDayCell = FirstMondayDayCell;
-            Clone.FirstDay = FirstDay;
-            Clone.FirstMondayDay = FirstMondayDay;
+            ExcelRollSettings Clone = new ExcelRollSettings
+            {
+                Export = Export,
+                ExportLab = ExportLab,
+                Header = Header,
+                FirstClass = FirstClass,
+                ClassIncrement = ClassIncrement,
+                ClassNameColumnLetter = ClassNameColumnLetter,
+                LastNameColumnLetter = LastNameColumnLetter,
+                FirstNameColumnLetter = FirstNameColumnLetter,
+                MondayDateCell = MondayDateCell,
+                FirstMondayDayCell = FirstMondayDayCell,
+                FirstDay = FirstDay,
+                FirstMondayDay = FirstMondayDay
+            };
 
             return Clone;
         }

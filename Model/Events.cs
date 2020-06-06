@@ -57,7 +57,7 @@ namespace InstructorBriefcaseExtractor.Model
             set { StrDialogBoxTitle = value; }
         }
 
-        private String StrOldDirectory;
+        private readonly String StrOldDirectory;
         public String OldDirectory
         {
             get { return StrOldDirectory; }

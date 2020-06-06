@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Globalization;
 using System.IO;
 
 namespace InstructorBriefcaseExtractor.Model
 {
     public class UserSettings
     {
-        private MyDirectory MyDocumentDirectory;
+        private readonly MyDirectory MyDocumentDirectory;
         public UserSettings()
         {
             MyDocumentDirectory = new MyDirectory();
@@ -18,7 +19,7 @@ namespace InstructorBriefcaseExtractor.Model
             string domainUser = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
             string[] parts = domainUser.Split('\\');
             Domain = parts[0];
-            UserName = parts[1].ToLower();
+            UserName = parts[1].ToLower(CultureInfo.CurrentCulture);
             FileName = "IBE_" + UserName + ".XML";
             MyDocuments = GetMyDocuments();
         }

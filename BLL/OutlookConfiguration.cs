@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,7 +38,7 @@ namespace InstructorBriefcaseExtractor.BLL
             catch
             {
                 OutlookSettings.Underscore = true;
-                XML.XMLWriteFile(xmlOUTLOOKNodeNameLocation, UnderscoreKey, OutlookSettings.Underscore.ToString());
+                XML.XMLWriteFile(xmlOUTLOOKNodeNameLocation, UnderscoreKey, OutlookSettings.Underscore.ToString(CultureInfo.CurrentCulture));
             }
 
             try
@@ -47,7 +48,7 @@ namespace InstructorBriefcaseExtractor.BLL
             catch
             {
                 OutlookSettings.Export = false;
-                XML.XMLWriteFile(xmlOUTLOOKNodeNameLocation, ExportKey, OutlookSettings.Export.ToString());
+                XML.XMLWriteFile(xmlOUTLOOKNodeNameLocation, ExportKey, OutlookSettings.Export.ToString(CultureInfo.CurrentCulture));
             }
 
             return OutlookSettings;
@@ -57,8 +58,8 @@ namespace InstructorBriefcaseExtractor.BLL
         {
             XMLhelper XML = new XMLhelper(UserSettings);
 
-            XML.XMLWriteFile(xmlOUTLOOKNodeNameLocation, ExportKey, OutlookSettings.Export.ToString());
-            XML.XMLWriteFile(xmlOUTLOOKNodeNameLocation, UnderscoreKey, OutlookSettings.Underscore.ToString());
+            XML.XMLWriteFile(xmlOUTLOOKNodeNameLocation, ExportKey, OutlookSettings.Export.ToString(CultureInfo.CurrentCulture));
+            XML.XMLWriteFile(xmlOUTLOOKNodeNameLocation, UnderscoreKey, OutlookSettings.Underscore.ToString(CultureInfo.CurrentCulture));
         }
     }
 

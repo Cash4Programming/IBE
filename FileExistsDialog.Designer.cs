@@ -65,7 +65,7 @@ namespace InstructorBriefcaseExtractor
             this.btnOverWriteAll.TabIndex = 4;
             this.btnOverWriteAll.Text = "Overwrite All Files";
             this.btnOverWriteAll.UseVisualStyleBackColor = true;
-            this.btnOverWriteAll.Click += new System.EventHandler(this.btnOverWriteAll_Click);
+            this.btnOverWriteAll.Click += new System.EventHandler(this.BtnOverWriteAll_Click);
             // 
             // btnSave
             // 
@@ -75,7 +75,7 @@ namespace InstructorBriefcaseExtractor
             this.btnSave.TabIndex = 5;
             this.btnSave.Text = "Save/Overwrite";
             this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.btnSave.Click += new System.EventHandler(this.BtnSave_Click);
             // 
             // btnCancel
             // 
@@ -86,7 +86,7 @@ namespace InstructorBriefcaseExtractor
             this.btnCancel.TabIndex = 8;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.btnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
             // 
             // btnCancelAll
             // 
@@ -96,7 +96,7 @@ namespace InstructorBriefcaseExtractor
             this.btnCancelAll.TabIndex = 7;
             this.btnCancelAll.Text = "Cancel All Export";
             this.btnCancelAll.UseVisualStyleBackColor = true;
-            this.btnCancelAll.Click += new System.EventHandler(this.btnCancelAll_Click);
+            this.btnCancelAll.Click += new System.EventHandler(this.BtnCancelAll_Click);
             // 
             // openFileDialog1
             // 
@@ -110,7 +110,7 @@ namespace InstructorBriefcaseExtractor
             this.btnOpenFile.TabIndex = 12;
             this.btnOpenFile.Text = "Select New FileName";
             this.btnOpenFile.UseVisualStyleBackColor = true;
-            this.btnOpenFile.Click += new System.EventHandler(this.btnOpenFile_Click);
+            this.btnOpenFile.Click += new System.EventHandler(this.BtnOpenFile_Click);
             // 
             // lblDirectory
             // 

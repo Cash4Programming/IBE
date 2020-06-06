@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 
 using System.Net;         // Needed for RetrieveHTMLPage  - WebRequest and CredentialCache
@@ -100,7 +101,7 @@ namespace InstructorBriefcaseExtractor.DAL
             ServicePointManager.Expect100Continue = true;
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
-            string HTMLPage = "";
+            string HTMLPage;
             try
             {
                 Stream Stream = client.OpenRead(URL);
@@ -110,7 +111,6 @@ namespace InstructorBriefcaseExtractor.DAL
             }
             catch
             {
-                HTMLPage = "";
                 throw;
             }
 
@@ -143,7 +143,7 @@ namespace InstructorBriefcaseExtractor.DAL
             // http://groups.google.com/group/microsoft.public.dotnet.framework.webservices/browse_frm/thread/c3a0c439943cac22/4da0ff45b5b3c095?lnk=st&q=parse+HTML+page+parameters+vb.net&rnum=2&hl=en#4da0ff45b5b3c095
             //
             //==========================================================           
-            HttpWebRequest myWebRequest = (HttpWebRequest)WebRequest.Create(URL);            
+            HttpWebRequest myWebRequest;            
             string RetrieveHTMLPage = "";
 
             if (myTimeOut < 1000)
@@ -177,20 +177,19 @@ namespace InstructorBriefcaseExtractor.DAL
                 // Retrieve responce
                 HttpWebResponse myWebResponse = (HttpWebResponse)myWebRequest.GetResponse();                
                 StreamReader sr = new StreamReader(myWebResponse.GetResponseStream());
-                RetrieveHTMLPage = sr.ReadToEnd().ToString();
+                RetrieveHTMLPage = sr.ReadToEnd().ToString(CultureInfo.CurrentCulture);
                 sr.Close();
                 myWebResponse.Close();
             }
             catch
-            {
-                myWebRequest = null;
+            {                
                 if(RetrieveHTMLPage == "")
                 {
                     throw;  // rethrow
                 }
                 // otherwise return what was found
-            }
-
+            } 
+            
             return RetrieveHTMLPage;
         }
 

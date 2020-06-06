@@ -1,5 +1,6 @@
 using System;
 using System.Drawing;
+using System.Globalization;
 using System.Windows.Forms;
 
 using InstructorBriefcaseExtractor.BLL;
@@ -13,13 +14,13 @@ namespace InstructorBriefcaseExtractor
     {
         private readonly static string CrLf = "\r\n";
         
-        // 510 x 410 - default size
-        private int smallheight = 500;
-        private int bigheight = 695;
-        private int defaultwidth = 563;
+        // default size
+        private readonly int smallheight = 500;
+        private readonly int bigheight = 695;
+        private readonly int defaultwidth = 563;
         // 
 
-        private Wizard myWizard;
+        private readonly Wizard myWizard;
         private bool blnAddClassesToCheckList;
         private bool Initilizing = false;
 
@@ -81,7 +82,7 @@ namespace InstructorBriefcaseExtractor
             //// Get the version. 
             //Version entryPointVersion = entryPointName.Version;
 
-            string ver = Application.ProductVersion.ToString();            
+            string ver = Application.ProductVersion.ToString(CultureInfo.CurrentCulture);            
             if (System.Deployment.Application.ApplicationDeployment.IsNetworkDeployed)
             {
                 System.Deployment.Application.ApplicationDeployment ad =
@@ -116,7 +117,9 @@ namespace InstructorBriefcaseExtractor
                 PostStepUpdateScreen();
                 LblEmployeeID.Text = myWizard.SelectedCollege.EmployeeIDprompt;
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception Ex)
+#pragma warning restore CA1031 // Do not catch general exception types
             {
                 Mail.EmailDeveloper(Properties.Settings.Default.EmailTo, "Error - IBE", Ex.Message);
                 MessageBox.Show(Ex.Message);
@@ -139,7 +142,7 @@ namespace InstructorBriefcaseExtractor
 
             //
             // if there are no quarter let an error occur
-            CmbQuarterName.Text = myWizard.CurrentQuarter();// CmbQuarterName.Items[0].ToString();
+            CmbQuarterName.Text = myWizard.CurrentQuarter();// CmbQuarterName.Items[0].ToString(CultureInfo.CurrentCulture);
             lblYRQ.Text = myWizard.Quarters[CmbQuarterName.Text].YRQ;
         }
 

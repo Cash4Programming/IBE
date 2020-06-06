@@ -3,7 +3,7 @@ namespace InstructorBriefcaseExtractor.Model
 {
     public class ClickerSettings
     {
-        private MyDirectory MyDirectory;
+        private readonly MyDirectory MyDirectory;
         public ClickerSettings()
         {
             MyDirectory = new MyDirectory();

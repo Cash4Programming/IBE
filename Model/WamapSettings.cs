@@ -3,7 +3,7 @@ namespace InstructorBriefcaseExtractor.Model
 {
     public class WamapSettings
     {
-        private MyDirectory MyDirectory;
+        private readonly MyDirectory MyDirectory;
         public WamapSettings()
         {
             MyDirectory = new MyDirectory();

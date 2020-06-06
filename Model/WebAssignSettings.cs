@@ -7,7 +7,7 @@ namespace InstructorBriefcaseExtractor.Model
 
     public class WebAssignSettings
     {
-        private MyDirectory MyDirectory;
+        private readonly MyDirectory MyDirectory;
         public WebAssignSettings()
         {
             MyDirectory = new MyDirectory();

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Security.Cryptography;
 
 using InstructorBriefcaseExtractor.Model;
@@ -16,7 +17,7 @@ namespace InstructorBriefcaseExtractor.BLL
         private readonly string CollegeAbbreviationKey = "CollegeAbbreviation";
 
 
-        private UserSettings UserSettings;
+        private readonly UserSettings UserSettings;
         
         public UserConfiguration(UserSettings UserSettings)
         {
@@ -45,7 +46,7 @@ namespace InstructorBriefcaseExtractor.BLL
             catch
             {
                 UserSettings.OverWriteAll = false;
-                XML.XMLWriteFile(xmlUserNodeNameLocation, OverWriteAllKey, UserSettings.OverWriteAll.ToString());                
+                XML.XMLWriteFile(xmlUserNodeNameLocation, OverWriteAllKey, UserSettings.OverWriteAll.ToString(CultureInfo.CurrentCulture));                
             }
 
             return UserSettings;
@@ -77,7 +78,7 @@ namespace InstructorBriefcaseExtractor.BLL
             }
 
             XML.XMLWriteFile(xmlUserNodeNameLocation, EmailKey, UserSettings.Email);
-            XML.XMLWriteFile(xmlUserNodeNameLocation, OverWriteAllKey, UserSettings.OverWriteAll.ToString());
+            XML.XMLWriteFile(xmlUserNodeNameLocation, OverWriteAllKey, UserSettings.OverWriteAll.ToString(CultureInfo.CurrentCulture));
         }
     }
 }

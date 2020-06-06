@@ -4,8 +4,8 @@ namespace InstructorBriefcaseExtractor.Model
     
     public class ExcelClassSettings
     {
-        private MyDirectory MyTemplateDirectory;
-        private MyDirectory MySaveAsDirectory;
+        private readonly MyDirectory MyTemplateDirectory;
+        private readonly MyDirectory MySaveAsDirectory;
         public OptionHeaders HeaderNames;
 
         public static string UserDesktop()

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 using InstructorBriefcaseExtractor.Model;
 using InstructorBriefcaseExtractor.Utility;
@@ -41,7 +42,7 @@ namespace InstructorBriefcaseExtractor.BLL
             }
             catch {
                 ClickerSettings.Export = false;
-                XML.XMLWriteFile(xmlRootCLICKERLocation, ExportKey, ClickerSettings.Export.ToString());
+                XML.XMLWriteFile(xmlRootCLICKERLocation, ExportKey, ClickerSettings.Export.ToString(CultureInfo.CurrentCulture));
             }
 
             try
@@ -50,7 +51,7 @@ namespace InstructorBriefcaseExtractor.BLL
             }
             catch {
                 ClickerSettings.Underscore = true;
-                XML.XMLWriteFile(xmlRootCLICKERLocation, UnderscoreKey, ClickerSettings.Underscore.ToString());
+                XML.XMLWriteFile(xmlRootCLICKERLocation, UnderscoreKey, ClickerSettings.Underscore.ToString(CultureInfo.CurrentCulture));
             }
 
             try
@@ -60,7 +61,7 @@ namespace InstructorBriefcaseExtractor.BLL
             catch
             {
                 ClickerSettings.SelectedValue = SelectedOutputDefault;
-                XML.XMLWriteFile(xmlRootCLICKERLocation, SelectedOutputkey, ClickerSettings.SelectedValue.ToString());
+                XML.XMLWriteFile(xmlRootCLICKERLocation, SelectedOutputkey, ClickerSettings.SelectedValue.ToString(CultureInfo.CurrentCulture));
             }
 
             
@@ -73,9 +74,9 @@ namespace InstructorBriefcaseExtractor.BLL
             XMLhelper XML = new XMLhelper(UserSettings);
 
             XML.XMLWriteFile(xmlRootCLICKERLocation, DirectoryKey, ClickerSettings.Directory);
-            XML.XMLWriteFile(xmlRootCLICKERLocation, ExportKey, ClickerSettings.Export.ToString());
-            XML.XMLWriteFile(xmlRootCLICKERLocation, UnderscoreKey, ClickerSettings.Underscore.ToString());
-            XML.XMLWriteFile(xmlRootCLICKERLocation, SelectedOutputkey, ClickerSettings.SelectedValue.ToString());
+            XML.XMLWriteFile(xmlRootCLICKERLocation, ExportKey, ClickerSettings.Export.ToString(CultureInfo.CurrentCulture));
+            XML.XMLWriteFile(xmlRootCLICKERLocation, UnderscoreKey, ClickerSettings.Underscore.ToString(CultureInfo.CurrentCulture));
+            XML.XMLWriteFile(xmlRootCLICKERLocation, SelectedOutputkey, ClickerSettings.SelectedValue.ToString(CultureInfo.CurrentCulture));
         }
     }
 }

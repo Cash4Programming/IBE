@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.IO;
 
 using InstructorBriefcaseExtractor.Model;
@@ -49,7 +50,7 @@ namespace InstructorBriefcaseExtractor.BLL
         public static readonly string SIDLast4ColumnLetterDefault = "G";
 
         //private readonly int Version;
-        private UserSettings UserSettings;
+        private readonly UserSettings UserSettings;
 
         private void SetStrings(UserSettings UserSettings)
         {
@@ -91,7 +92,7 @@ namespace InstructorBriefcaseExtractor.BLL
             catch
             {
                 ExcelClassSettings.Export = false;
-                XML.XMLWriteFile(xmlEXCELNodeNameLocation, ExportKey, ExcelClassSettings.Export.ToString());
+                XML.XMLWriteFile(xmlEXCELNodeNameLocation, ExportKey, ExcelClassSettings.Export.ToString(CultureInfo.CurrentCulture));
             }
 
             try
@@ -101,7 +102,7 @@ namespace InstructorBriefcaseExtractor.BLL
             catch
             {
                 ExcelClassSettings.ExportWaitlist = false;
-                XML.XMLWriteFile(xmlEXCELNodeNameLocation, ExportWaitListKey, ExcelClassSettings.ExportWaitlist.ToString());
+                XML.XMLWriteFile(xmlEXCELNodeNameLocation, ExportWaitListKey, ExcelClassSettings.ExportWaitlist.ToString(CultureInfo.CurrentCulture));
             }
 
             try
@@ -111,7 +112,7 @@ namespace InstructorBriefcaseExtractor.BLL
             catch
             {
                 ExcelClassSettings.ExportMiddleInitial = false;
-                XML.XMLWriteFile(xmlEXCELNodeNameLocation, ExportMiddleInitialKey, ExcelClassSettings.ExportMiddleInitial.ToString());
+                XML.XMLWriteFile(xmlEXCELNodeNameLocation, ExportMiddleInitialKey, ExcelClassSettings.ExportMiddleInitial.ToString(CultureInfo.CurrentCulture));
             }
 
             try
@@ -121,7 +122,7 @@ namespace InstructorBriefcaseExtractor.BLL
             catch
             {
                 ExcelClassSettings.ExportSID = true;
-                XML.XMLWriteFile(xmlEXCELNodeNameLocation, ExportSIDKey, ExcelClassSettings.ExportSID.ToString());
+                XML.XMLWriteFile(xmlEXCELNodeNameLocation, ExportSIDKey, ExcelClassSettings.ExportSID.ToString(CultureInfo.CurrentCulture));
             }
 
             try
@@ -131,7 +132,7 @@ namespace InstructorBriefcaseExtractor.BLL
             catch
             {
                 ExcelClassSettings.ExportSIDLast4 = false;
-                XML.XMLWriteFile(xmlEXCELNodeNameLocation, ExportSIDLast4Key, ExcelClassSettings.ExportSIDLast4.ToString());
+                XML.XMLWriteFile(xmlEXCELNodeNameLocation, ExportSIDLast4Key, ExcelClassSettings.ExportSIDLast4.ToString(CultureInfo.CurrentCulture));
             }
 
             try
@@ -141,7 +142,7 @@ namespace InstructorBriefcaseExtractor.BLL
             catch
             {
                 ExcelClassSettings.FirstStudent = FirstStudentDefault;
-                XML.XMLWriteFile(xmlEXCELNodeNameLocation, FirstStudentKey, ExcelClassSettings.FirstStudent.ToString());
+                XML.XMLWriteFile(xmlEXCELNodeNameLocation, FirstStudentKey, ExcelClassSettings.FirstStudent.ToString(CultureInfo.CurrentCulture));
             }
 
             try
@@ -151,7 +152,7 @@ namespace InstructorBriefcaseExtractor.BLL
             catch
             {
                 ExcelClassSettings.SaveFileNameIncludesQuarter = true;
-                XML.XMLWriteFile(xmlEXCELNodeNameLocation, TemplateCopyNameIncludesQuarterKey, ExcelClassSettings.SaveFileNameIncludesQuarter.ToString());
+                XML.XMLWriteFile(xmlEXCELNodeNameLocation, TemplateCopyNameIncludesQuarterKey, ExcelClassSettings.SaveFileNameIncludesQuarter.ToString(CultureInfo.CurrentCulture));
             }
 
 
@@ -238,7 +239,7 @@ namespace InstructorBriefcaseExtractor.BLL
             catch
             {
                 ExcelClassSettings.ExportoptHead1 = false;
-                XML.XMLWriteFile(xmlEXCELNodeNameLocation, ExportoptHead1Key, ExcelClassSettings.ExportoptHead1.ToString());
+                XML.XMLWriteFile(xmlEXCELNodeNameLocation, ExportoptHead1Key, ExcelClassSettings.ExportoptHead1.ToString(CultureInfo.CurrentCulture));
             }
 
             try
@@ -248,7 +249,7 @@ namespace InstructorBriefcaseExtractor.BLL
             catch
             {
                 ExcelClassSettings.ExportoptHead2 = false;
-                XML.XMLWriteFile(xmlEXCELNodeNameLocation, ExportoptHead2Key, ExcelClassSettings.ExportoptHead2.ToString());
+                XML.XMLWriteFile(xmlEXCELNodeNameLocation, ExportoptHead2Key, ExcelClassSettings.ExportoptHead2.ToString(CultureInfo.CurrentCulture));
             }
 
 
@@ -260,7 +261,7 @@ namespace InstructorBriefcaseExtractor.BLL
             catch
             {
                 ExcelClassSettings.ExportoptHead3 = false;
-                XML.XMLWriteFile(xmlEXCELNodeNameLocation, ExportoptHead3Key, ExcelClassSettings.ExportoptHead3.ToString());
+                XML.XMLWriteFile(xmlEXCELNodeNameLocation, ExportoptHead3Key, ExcelClassSettings.ExportoptHead3.ToString(CultureInfo.CurrentCulture));
             }
 
             #endregion
@@ -314,14 +315,14 @@ namespace InstructorBriefcaseExtractor.BLL
         {
             XMLhelper XML = new XMLhelper(UserSettings);
 
-            XML.XMLWriteFile(xmlEXCELNodeNameLocation, ExportKey, ExcelClassSettings.Export.ToString());
-            XML.XMLWriteFile(xmlEXCELNodeNameLocation, ExportWaitListKey, ExcelClassSettings.ExportWaitlist.ToString());
-            XML.XMLWriteFile(xmlEXCELNodeNameLocation, ExportMiddleInitialKey, ExcelClassSettings.ExportMiddleInitial.ToString());
-            XML.XMLWriteFile(xmlEXCELNodeNameLocation, ExportSIDKey, ExcelClassSettings.ExportSID.ToString());
-            XML.XMLWriteFile(xmlEXCELNodeNameLocation, ExportSIDLast4Key, ExcelClassSettings.ExportSIDLast4.ToString());
-            XML.XMLWriteFile(xmlEXCELNodeNameLocation, FirstStudentKey, ExcelClassSettings.FirstStudent.ToString());
-            XML.XMLWriteFile(xmlEXCELNodeNameLocation, TemplateCopyNameIncludesQuarterKey, ExcelClassSettings.SaveFileNameIncludesQuarter.ToString());
-            XML.XMLWriteFile(xmlEXCELNodeNameLocation, ExportoptHead1Key, ExcelClassSettings.ExportoptHead1.ToString());
+            XML.XMLWriteFile(xmlEXCELNodeNameLocation, ExportKey, ExcelClassSettings.Export.ToString(CultureInfo.CurrentCulture));
+            XML.XMLWriteFile(xmlEXCELNodeNameLocation, ExportWaitListKey, ExcelClassSettings.ExportWaitlist.ToString(CultureInfo.CurrentCulture));
+            XML.XMLWriteFile(xmlEXCELNodeNameLocation, ExportMiddleInitialKey, ExcelClassSettings.ExportMiddleInitial.ToString(CultureInfo.CurrentCulture));
+            XML.XMLWriteFile(xmlEXCELNodeNameLocation, ExportSIDKey, ExcelClassSettings.ExportSID.ToString(CultureInfo.CurrentCulture));
+            XML.XMLWriteFile(xmlEXCELNodeNameLocation, ExportSIDLast4Key, ExcelClassSettings.ExportSIDLast4.ToString(CultureInfo.CurrentCulture));
+            XML.XMLWriteFile(xmlEXCELNodeNameLocation, FirstStudentKey, ExcelClassSettings.FirstStudent.ToString(CultureInfo.CurrentCulture));
+            XML.XMLWriteFile(xmlEXCELNodeNameLocation, TemplateCopyNameIncludesQuarterKey, ExcelClassSettings.SaveFileNameIncludesQuarter.ToString(CultureInfo.CurrentCulture));
+            XML.XMLWriteFile(xmlEXCELNodeNameLocation, ExportoptHead1Key, ExcelClassSettings.ExportoptHead1.ToString(CultureInfo.CurrentCulture));
             XML.XMLWriteFile(xmlEXCELNodeNameLocation, FirstNameColumnLetterKey, ExcelClassSettings.FirstNameColumnLetter);
             XML.XMLWriteFile(xmlEXCELNodeNameLocation, ItemCellKey, ExcelClassSettings.ItemCell);
             XML.XMLWriteFile(xmlEXCELNodeNameLocation, LastNameColumnLetterKey, ExcelClassSettings.LastNameColumnLetter);

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,7 +33,7 @@ namespace InstructorBriefcaseExtractor.BLL
         public WebAssignSettings Load()
         {
             WebAssignSettings WebAssignSettings = new WebAssignSettings();
-            string Return = "";
+            string Return;
 
             XMLhelper XML = new XMLhelper(UserSettings);
 
@@ -50,7 +51,7 @@ namespace InstructorBriefcaseExtractor.BLL
             catch
             {
                 WebAssignSettings.Export = false;
-                XML.XMLWriteFile(xmlWEBASSIGNNodeNameLocation, ExportKey, WebAssignSettings.Export.ToString());
+                XML.XMLWriteFile(xmlWEBASSIGNNodeNameLocation, ExportKey, WebAssignSettings.Export.ToString(CultureInfo.CurrentCulture));
             }
 
             Return = XML.XMLReadFile(xmlWEBASSIGNNodeNameLocation, PasswordKey);
@@ -91,7 +92,7 @@ namespace InstructorBriefcaseExtractor.BLL
             catch
             {
                 WebAssignSettings.Underscore = true;
-                XML.XMLWriteFile(xmlWEBASSIGNNodeNameLocation, UnderscoreKey, WebAssignSettings.Underscore.ToString());
+                XML.XMLWriteFile(xmlWEBASSIGNNodeNameLocation, UnderscoreKey, WebAssignSettings.Underscore.ToString(CultureInfo.CurrentCulture));
             }
             WebAssignSettings.Institution = XML.XMLReadFile(xmlWEBASSIGNNodeNameLocation, InstitutionKey);
 
@@ -121,11 +122,11 @@ namespace InstructorBriefcaseExtractor.BLL
 
         public void Save(WebAssignSettings WebAssignSettings)
         {
-            string Temp = "";
+            string Temp;
             XMLhelper XML = new XMLhelper(UserSettings);
 
             XML.XMLWriteFile(xmlWEBASSIGNNodeNameLocation, DirectoryKey, WebAssignSettings.Directory);
-            XML.XMLWriteFile(xmlWEBASSIGNNodeNameLocation, ExportKey, WebAssignSettings.Export.ToString());
+            XML.XMLWriteFile(xmlWEBASSIGNNodeNameLocation, ExportKey, WebAssignSettings.Export.ToString(CultureInfo.CurrentCulture));
             
 
             if (WebAssignSettings.UserPassword== WebAssignPassword.LastName)
@@ -150,7 +151,7 @@ namespace InstructorBriefcaseExtractor.BLL
             { Temp = "First_Name_Initial_plus_Middle_Initial_plus_Last_Name"; }
 
             XML.XMLWriteFile(xmlWEBASSIGNNodeNameLocation, UsernameKey, Temp);
-            XML.XMLWriteFile(xmlWEBASSIGNNodeNameLocation, UnderscoreKey, WebAssignSettings.Underscore.ToString());
+            XML.XMLWriteFile(xmlWEBASSIGNNodeNameLocation, UnderscoreKey, WebAssignSettings.Underscore.ToString(CultureInfo.CurrentCulture));
             XML.XMLWriteFile(xmlWEBASSIGNNodeNameLocation, InstitutionKey, WebAssignSettings.Institution);
         }
     }

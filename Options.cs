@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.IO;
 using System.Windows.Forms;
 
@@ -25,11 +26,11 @@ namespace InstructorBriefcaseExtractor
 
         #endregion
 
-        private bool CollegeOnly = false;
-        private GenericSettingsCollection SummerMonthList = new GenericSettingsCollection();
-        private GenericSettingsCollection FallMonthList = new GenericSettingsCollection();
-        private GenericSettingsCollection WinterMonthList = new GenericSettingsCollection();
-        private GenericSettingsCollection SpringMonthList = new GenericSettingsCollection();
+        private readonly bool CollegeOnly = false;
+        private readonly GenericSettingsCollection SummerMonthList = new GenericSettingsCollection();
+        private readonly GenericSettingsCollection FallMonthList = new GenericSettingsCollection();
+        private readonly GenericSettingsCollection WinterMonthList = new GenericSettingsCollection();
+        private readonly GenericSettingsCollection SpringMonthList = new GenericSettingsCollection();
         
         public Options()
         {
@@ -138,7 +139,7 @@ namespace InstructorBriefcaseExtractor
             TxtExcelSaveAsDirectory.Text = Class.SaveFileDirectory;
             TxtExcelSaveAsFileName.Text = Class.SaveFileName;
             ChkExcelCommonIncludeQuarter.Checked = Class.SaveFileNameIncludesQuarter;
-            TxtExcelClassFirstStudentRow.Text = Class.FirstStudent.ToString();
+            TxtExcelClassFirstStudentRow.Text = Class.FirstStudent.ToString(CultureInfo.CurrentCulture);
             TxtExcelClassSID.Text = Class.SIDColumnLetter;
             chkExcelClassExportSID.Checked = Class.ExportSID;
             TxtExcelClassSIDLast4.Text = Class.SIDLast4ColumnLetter;
@@ -177,8 +178,8 @@ namespace InstructorBriefcaseExtractor
             ChkExcelRollExport.Checked = Roll.Export;            
             ChkExcelRollExportWaitlist.Checked = Roll.ExportWaitlist;
             ChkExcelLabExport.Checked = Roll.ExportLab;
-            txtRollFirstClass.Text = Roll.FirstClass.ToString();
-            txtRollClassIncrement.Text = Roll.ClassIncrement.ToString();
+            txtRollFirstClass.Text = Roll.FirstClass.ToString(CultureInfo.CurrentCulture);
+            txtRollClassIncrement.Text = Roll.ClassIncrement.ToString(CultureInfo.CurrentCulture);
             txtRollHeader.Text = Roll.Header;
             txtRollLastName.Text = Roll.LastNameColumnLetter;
             txtRollFirstName.Text = Roll.FirstNameColumnLetter;

@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 using System.Text;
 using System.IO;
 
@@ -41,7 +42,7 @@ namespace InstructorBriefcaseExtractor.BLL
             // DESCRIPTION
             //    This procedure exports to an Outlook Distribution list
             //==========================================================            
-            bool DeleteFileError = false;
+            bool DeleteFileError;
 
             // Verify that MTG is to be exported
             if (!MTGSettings.Export) { return; }

@@ -3,7 +3,7 @@ namespace InstructorBriefcaseExtractor.Model
 {
     public class MTGSettings
     {
-        private MyDirectory MyDirectory;
+        private readonly MyDirectory MyDirectory;
         public MTGSettings()
         {
             MyDirectory = new MyDirectory();

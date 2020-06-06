@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 using System.IO;
 
 using InstructorBriefcaseExtractor.Model; 
@@ -54,13 +55,13 @@ namespace InstructorBriefcaseExtractor.BLL
         public Colleges Colleges { get; set; }
         public Quarter2MonthSettings Quarter2Month { get; set; }
 
-        private Quarters myQuarters;               // Available Quarter
+        private readonly Quarters myQuarters;               // Available Quarter
         public Quarters Quarters
         {
             get { return myQuarters; }
         }
 
-        private Courses myCourses;                 // Available Courses for selected Quarter
+        private readonly Courses myCourses;                 // Available Courses for selected Quarter
         public Courses Courses
         {
             get { return myCourses; }
@@ -166,7 +167,7 @@ namespace InstructorBriefcaseExtractor.BLL
 
             if (!File.Exists(UserSettings.PathandFileName))
             {
-                if (UserSettings.Domain.ToLower() == "yvcc")
+                if (UserSettings.Domain.ToLower(CultureInfo.CurrentCulture) == "yvcc")
                 {
                     UserSettings.CollegeAbbreviation = YVC.Key;
                 }
@@ -567,7 +568,7 @@ namespace InstructorBriefcaseExtractor.BLL
                     int numberofcourses = GetCourses(myLogin);
                     if (numberofcourses > 0)
                     {
-                        SendMessage(this, new Information(numberofcourses.ToString()+" classes retrieved!"));
+                        SendMessage(this, new Information(numberofcourses.ToString(CultureInfo.CurrentCulture)+" classes retrieved!"));
                         CurrentCompletedStep = WizardStep.ClassesRetrieved;
                     }
                     else

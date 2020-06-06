@@ -4,7 +4,7 @@ using System.Reflection; // Required for Missing.Value
 using MSOffice = Microsoft.Office.Interop;
 
 using InstructorBriefcaseExtractor.Model;
-
+using System.Globalization;
 
 namespace InstructorBriefcaseExtractor.BLL
 {
@@ -57,7 +57,7 @@ namespace InstructorBriefcaseExtractor.BLL
         MSOffice.Excel._Worksheet mySheet = null;              // loop variable
         MSOffice.Excel._Worksheet myCopy = null;              // Copy variable
 
-        UserSettings UserSettings;
+        private readonly UserSettings UserSettings;
         #endregion
 
         public Excel(UserSettings UserSettings)
@@ -232,8 +232,7 @@ namespace InstructorBriefcaseExtractor.BLL
             // DESCRIPTION
             //    This procedure exports Student information to an Excel
             // spreadsheet.
-            //==========================================================
-            bool RetVal = false;
+            //==========================================================            
             // Does the template Exist?
             if (!File.Exists(ExcelClassSettings.TemplatePathandFileName))
             { throw new Exception("The Excel template " + ExcelClassSettings.TemplatePathandFileName + " does not exist"); }
@@ -299,7 +298,7 @@ namespace InstructorBriefcaseExtractor.BLL
 
                 // write the data                
                 ExcelConfigWorksheet.Cells[6, 2].Value = ExcelClassSettings.FirstNameColumnLetter;
-                ExcelConfigWorksheet.Cells[7, 2].Value = ExcelClassSettings.FirstStudent.ToString();
+                ExcelConfigWorksheet.Cells[7, 2].Value = ExcelClassSettings.FirstStudent.ToString(CultureInfo.CurrentCulture);
                 ExcelConfigWorksheet.Cells[8, 2].Value = ExcelClassSettings.ItemCell;
                 ExcelConfigWorksheet.Cells[9, 2].Value = ExcelClassSettings.LastNameColumnLetter;
                 ExcelConfigWorksheet.Cells[10, 2].Value = ExcelClassSettings.SIDColumnLetter;
@@ -308,17 +307,17 @@ namespace InstructorBriefcaseExtractor.BLL
                 ExcelConfigWorksheet.Cells[13, 2].Value = ExcelClassSettings.OptHead2ColumnLetter;
                 ExcelConfigWorksheet.Cells[14, 2].Value = ExcelClassSettings.OptHead3ColumnLetter;
 
-                ExcelConfigWorksheet.Cells[23, 2].Value = ExcelRollSettings.ClassIncrement.ToString();
-                ExcelConfigWorksheet.Cells[24, 2].Value = ExcelRollSettings.FirstClass.ToString();
+                ExcelConfigWorksheet.Cells[23, 2].Value = ExcelRollSettings.ClassIncrement.ToString(CultureInfo.CurrentCulture);
+                ExcelConfigWorksheet.Cells[24, 2].Value = ExcelRollSettings.FirstClass.ToString(CultureInfo.CurrentCulture);
                 ExcelConfigWorksheet.Cells[25, 2].Value = ExcelRollSettings.FirstMondayDayCell;
                 ExcelConfigWorksheet.Cells[26, 2].Value = ExcelRollSettings.FirstNameColumnLetter;
                 ExcelConfigWorksheet.Cells[27, 2].Value = ExcelRollSettings.LastNameColumnLetter;
                 ExcelConfigWorksheet.Cells[28, 2].Value = ExcelRollSettings.MondayDateCell;
                 ExcelConfigWorksheet.Cells[29, 2].Value = ExcelRollSettings.ClassNameColumnLetter;
             }
-            catch (Exception Ex)
+            catch 
             {
-                string M = Ex.Message;
+                //string M = Ex.Message;
 
             }
             finally
@@ -339,11 +338,10 @@ namespace InstructorBriefcaseExtractor.BLL
                 }
                 finally
                 {
-                    ExcelWorkbook = null;
-                }
-                RetVal = true;
+                    ExcelWorkbook = null;                    
+                }                
             }
-            return RetVal;
+            return true;
         }
 
         public bool LoadConfigurationFromSpreadSheet(ExcelRollSettings ExcelRollSettings, ExcelClassSettings ExcelClassSettings)

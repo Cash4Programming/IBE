@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Text;
 using System.IO;
 
@@ -42,7 +43,7 @@ namespace InstructorBriefcaseExtractor.BLL
             // DESCRIPTION
             //    This procedure exports to an WebAssign upload files
             //==========================================================
-            bool DeleteFileError = false;
+            bool DeleteFileError;
             
             // Verify that WebAssign is to be exported
             if (!WamapSettings.Export) { return; }

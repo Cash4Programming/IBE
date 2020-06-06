@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using InstructorBriefcaseExtractor.Model;
 using InstructorBriefcaseExtractor.Utility;
 
@@ -30,42 +31,42 @@ namespace InstructorBriefcaseExtractor.BLL
 
             try
             {
-                Quarter2Month.SummerMonth = Convert.ToInt32(XML.XMLReadFile(xmlRootQuarter2MonthLocation, SummerMonthKey));
+                Quarter2Month.SummerMonth = Convert.ToInt32(XML.XMLReadFile(xmlRootQuarter2MonthLocation, SummerMonthKey), CultureInfo.CurrentCulture);
             }
             catch
             {
                 Quarter2Month.SummerMonth = SummerMonthDefault;
-                XML.XMLWriteFile(xmlRootQuarter2MonthLocation, SummerMonthKey, Quarter2Month.SummerMonth.ToString());
+                XML.XMLWriteFile(xmlRootQuarter2MonthLocation, SummerMonthKey, Quarter2Month.SummerMonth.ToString(CultureInfo.CurrentCulture));
             }
 
             try
             {
-                Quarter2Month.FallMonth = Convert.ToInt32(XML.XMLReadFile(xmlRootQuarter2MonthLocation, FallMonthKey));
+                Quarter2Month.FallMonth = Convert.ToInt32(XML.XMLReadFile(xmlRootQuarter2MonthLocation, FallMonthKey), CultureInfo.CurrentCulture);
             }
             catch
             {
                 Quarter2Month.FallMonth = FallMonthDefault;
-                XML.XMLWriteFile(xmlRootQuarter2MonthLocation, FallMonthKey, Quarter2Month.FallMonth.ToString());
+                XML.XMLWriteFile(xmlRootQuarter2MonthLocation, FallMonthKey, Quarter2Month.FallMonth.ToString(CultureInfo.CurrentCulture));
             }
 
             try
             {
-                Quarter2Month.WinterMonth = Convert.ToInt32(XML.XMLReadFile(xmlRootQuarter2MonthLocation, WinterMonthKey));
+                Quarter2Month.WinterMonth = Convert.ToInt32(XML.XMLReadFile(xmlRootQuarter2MonthLocation, WinterMonthKey), CultureInfo.CurrentCulture);
             }
             catch 
             {
                 Quarter2Month.WinterMonth = WinterMonthDefault;
-                XML.XMLWriteFile(xmlRootQuarter2MonthLocation, WinterMonthKey, Quarter2Month.WinterMonth.ToString());
+                XML.XMLWriteFile(xmlRootQuarter2MonthLocation, WinterMonthKey, Quarter2Month.WinterMonth.ToString(CultureInfo.CurrentCulture));
             }
 
             try
             {
-                Quarter2Month.SpringMonth = Convert.ToInt32(XML.XMLReadFile(xmlRootQuarter2MonthLocation, SpringMonthKey));
+                Quarter2Month.SpringMonth = Convert.ToInt32(XML.XMLReadFile(xmlRootQuarter2MonthLocation, SpringMonthKey), CultureInfo.CurrentCulture);
             }
             catch 
             {
                 Quarter2Month.SpringMonth = SpringMonthDefault;
-                XML.XMLWriteFile(xmlRootQuarter2MonthLocation, SpringMonthKey, Quarter2Month.SpringMonth.ToString());
+                XML.XMLWriteFile(xmlRootQuarter2MonthLocation, SpringMonthKey, Quarter2Month.SpringMonth.ToString(CultureInfo.CurrentCulture));
             }
             
             return Quarter2Month;
@@ -76,10 +77,10 @@ namespace InstructorBriefcaseExtractor.BLL
         {
             XMLhelper XML = new XMLhelper(UserSettings);
 
-            XML.XMLWriteFile(xmlRootQuarter2MonthLocation, SummerMonthKey, Quarter2Month.SummerMonth.ToString());
-            XML.XMLWriteFile(xmlRootQuarter2MonthLocation, FallMonthKey, Quarter2Month.FallMonth.ToString());
-            XML.XMLWriteFile(xmlRootQuarter2MonthLocation, WinterMonthKey, Quarter2Month.WinterMonth.ToString());
-            XML.XMLWriteFile(xmlRootQuarter2MonthLocation, SpringMonthKey, Quarter2Month.SpringMonth.ToString());
+            XML.XMLWriteFile(xmlRootQuarter2MonthLocation, SummerMonthKey, Quarter2Month.SummerMonth.ToString(CultureInfo.CurrentCulture));
+            XML.XMLWriteFile(xmlRootQuarter2MonthLocation, FallMonthKey, Quarter2Month.FallMonth.ToString(CultureInfo.CurrentCulture));
+            XML.XMLWriteFile(xmlRootQuarter2MonthLocation, WinterMonthKey, Quarter2Month.WinterMonth.ToString(CultureInfo.CurrentCulture));
+            XML.XMLWriteFile(xmlRootQuarter2MonthLocation, SpringMonthKey, Quarter2Month.SpringMonth.ToString(CultureInfo.CurrentCulture));
         }
 
         #region Base38 YRQ <--> Quarter Name Conversion
@@ -104,7 +105,7 @@ namespace InstructorBriefcaseExtractor.BLL
         ////// 
         ////// 
 
-        private string Base38List = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        private readonly string Base38List = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         private readonly static string[] QuarterNameTable = new string[] { "Summer", "Fall", "Winter", "Spring" };
 
         public string EncodeYRQFunction(int StartYear, int Quarter)
@@ -132,11 +133,11 @@ namespace InstructorBriefcaseExtractor.BLL
             int FirstThreedigits = (StartYear - ones) / 10;
             int Base38pos = FirstThreedigits - 190;
 
-            string YRQFirstChar = Base38List[Base38pos].ToString();
-            string YRQSecondChar = ones.ToString();
-            string YRQThirdChar = YRQThirdChari.ToString();
+            string YRQFirstChar = Base38List[Base38pos].ToString(CultureInfo.CurrentCulture);
+            string YRQSecondChar = ones.ToString(CultureInfo.CurrentCulture);
+            string YRQThirdChar = YRQThirdChari.ToString(CultureInfo.CurrentCulture);
 
-            return YRQFirstChar + YRQSecondChar + YRQThirdChar + Quarter.ToString();
+            return YRQFirstChar + YRQSecondChar + YRQThirdChar + Quarter.ToString(CultureInfo.CurrentCulture);
         }
 
         private string DecodeYRQFunction(int OutputType, string YRQ)
@@ -151,9 +152,9 @@ namespace InstructorBriefcaseExtractor.BLL
             if (pos < 0) { throw new Exception("YRQ must start with a digit or a capital letter."); }
 
             int baseyear = (190 + pos) * 10;
-            int startyear = baseyear + Convert.ToInt32(YRQ[1].ToString());
+            int startyear = baseyear + Convert.ToInt32(YRQ[1].ToString(CultureInfo.CurrentCulture));
             int endyear = startyear + 1;
-            string QuarterNumber = YRQ[3].ToString();
+            string QuarterNumber = YRQ[3].ToString(CultureInfo.CurrentCulture);
             int Quarter = Convert.ToInt32(QuarterNumber) - 1;
             if ((Quarter < 0) || (3 < Quarter)) { throw new Exception("Quarter must be a number between 1 and 4."); }
             string QuarterName = QuarterNameTable[Quarter];
@@ -170,26 +171,26 @@ namespace InstructorBriefcaseExtractor.BLL
             switch (OutputOption)
             {
                 case 0:
-                    ReturnVal = startyear.ToString() + "-" + endyear.ToString() + " " + QuarterName;
+                    ReturnVal = startyear.ToString(CultureInfo.CurrentCulture) + "-" + endyear.ToString(CultureInfo.CurrentCulture) + " " + QuarterName;
                     break;
                 case 1:
                     ReturnVal = QuarterNumber + " - " + QuarterName;
                     break;
                 case 2:
-                    ReturnVal = startyear.ToString() + "-" + endyear.ToString().Substring(0, 2);
+                    ReturnVal = startyear.ToString(CultureInfo.CurrentCulture) + "-" + endyear.ToString(CultureInfo.CurrentCulture).Substring(0, 2);
                     break;
                 case 3:
-                    ReturnVal = startyear.ToString() + " - " + endyear.ToString().Substring(0, 2);
+                    ReturnVal = startyear.ToString(CultureInfo.CurrentCulture) + " - " + endyear.ToString(CultureInfo.CurrentCulture).Substring(0, 2);
                     break;
                 case 4:
-                    if (Quarter >= 2) { ReturnVal = QuarterName + " " + endyear.ToString(); }
-                    else ReturnVal = QuarterName + " " + startyear.ToString();
+                    if (Quarter >= 2) { ReturnVal = QuarterName + " " + endyear.ToString(CultureInfo.CurrentCulture); }
+                    else ReturnVal = QuarterName + " " + startyear.ToString(CultureInfo.CurrentCulture);
                     break;
                 case 5:
-                    ReturnVal = startyear.ToString();
+                    ReturnVal = startyear.ToString(CultureInfo.CurrentCulture);
                     break;
                 case 6:
-                    ReturnVal = QuarterName.ToUpper();
+                    ReturnVal = QuarterName.ToUpper(CultureInfo.CurrentCulture);
                     break;
                 default:
                     break;
@@ -220,11 +221,11 @@ namespace InstructorBriefcaseExtractor.BLL
 
             //https://lcc.ctc.edu/internal/waYRQGenerator.htm
 
-            MyQuarters.Add("Summer " + SummerFallYear.ToString(), EncodeYRQFunction(SummerFallYear, 1));
-            MyQuarters.Add("Fall " + SummerFallYear.ToString(), EncodeYRQFunction(SummerFallYear, 2));
-            MyQuarters.Add("Winter " + WinterSpringYear.ToString(), EncodeYRQFunction(WinterSpringYear, 3));
-            MyQuarters.Add("Spring " + WinterSpringYear.ToString(), EncodeYRQFunction(WinterSpringYear, 4));
-            MyQuarters.Add("Summer " + WinterSpringYear.ToString(), EncodeYRQFunction(WinterSpringYear, 1));
+            MyQuarters.Add("Summer " + SummerFallYear.ToString(CultureInfo.CurrentCulture), EncodeYRQFunction(SummerFallYear, 1));
+            MyQuarters.Add("Fall " + SummerFallYear.ToString(CultureInfo.CurrentCulture), EncodeYRQFunction(SummerFallYear, 2));
+            MyQuarters.Add("Winter " + WinterSpringYear.ToString(CultureInfo.CurrentCulture), EncodeYRQFunction(WinterSpringYear, 3));
+            MyQuarters.Add("Spring " + WinterSpringYear.ToString(CultureInfo.CurrentCulture), EncodeYRQFunction(WinterSpringYear, 4));
+            MyQuarters.Add("Summer " + WinterSpringYear.ToString(CultureInfo.CurrentCulture), EncodeYRQFunction(WinterSpringYear, 1));
 
             return MyQuarters;
         }
@@ -234,24 +235,30 @@ namespace InstructorBriefcaseExtractor.BLL
             int year = DateTime.Now.Year;
             int month = DateTime.Now.Month;
             
-            int SummerFallYear;
-            int WinterSpringYear;
+            // default values 
+            int SummerFallYear = year - 1;
+            int WinterSpringYear = year;
 
             if ((1 <= month) && (month <= 5))
-            {
-                WinterSpringYear = year;
-                SummerFallYear = year - 1;
-
-                if (month < Quarter2Month.SpringMonth) return "Winter " + WinterSpringYear.ToString();
-                return "Spring " + WinterSpringYear.ToString();
+            {               
+                if (month < Quarter2Month.SpringMonth) return "Winter " + WinterSpringYear.ToString(CultureInfo.CurrentCulture);
+                return "Spring " + WinterSpringYear.ToString(CultureInfo.CurrentCulture);
             }
             else
-            {
-                SummerFallYear = year;
-                WinterSpringYear = year + 1;
-                if (month < Quarter2Month.FallMonth) return "Summer " + WinterSpringYear.ToString();
-                if (Quarter2Month.WinterMonth == month) return "Winter " + WinterSpringYear.ToString();
-                return "Fall " + SummerFallYear.ToString();
+            {                
+                if (6 < month)
+                {
+                    SummerFallYear = year;
+                    WinterSpringYear = year + 1;
+                }
+                else
+                {
+                    WinterSpringYear = year;
+                    SummerFallYear = year - 1;
+                }
+                if (month < Quarter2Month.FallMonth) return "Summer " + WinterSpringYear.ToString(CultureInfo.CurrentCulture);
+                if (Quarter2Month.WinterMonth == month) return "Winter " + WinterSpringYear.ToString(CultureInfo.CurrentCulture);
+                return "Fall " + SummerFallYear.ToString(CultureInfo.CurrentCulture);
             }         
         }
     }

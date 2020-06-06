@@ -10,7 +10,7 @@ namespace InstructorBriefcaseExtractor.Utility
 
         public static void EmailDeveloper(string EmailTo, string subject, string body)
         {
-            MailMessage myMessage = null;
+            MailMessage myMessage;
             try
             {
                 // Use exchange server to send email

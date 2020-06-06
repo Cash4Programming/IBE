@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -47,7 +48,7 @@ namespace InstructorBriefcaseExtractor.BLL
             catch
             {
                 WamapSettings.Underscore = true;
-                XML.XMLWriteFile(xmlWAMAPNodeNameLocation, UnderscoreKey, WamapSettings.Underscore.ToString());
+                XML.XMLWriteFile(xmlWAMAPNodeNameLocation, UnderscoreKey, WamapSettings.Underscore.ToString(CultureInfo.CurrentCulture));
             }
 
             try
@@ -57,7 +58,7 @@ namespace InstructorBriefcaseExtractor.BLL
             catch
             {
                 WamapSettings.Export = false;
-                XML.XMLWriteFile(xmlWAMAPNodeNameLocation, ExportKey, WamapSettings.Export.ToString());
+                XML.XMLWriteFile(xmlWAMAPNodeNameLocation, ExportKey, WamapSettings.Export.ToString(CultureInfo.CurrentCulture));
             }
 
             return WamapSettings;
@@ -68,8 +69,8 @@ namespace InstructorBriefcaseExtractor.BLL
             XMLhelper XML = new XMLhelper(UserSettings);
 
             XML.XMLWriteFile(xmlWAMAPNodeNameLocation, DirectoryKey, WamapSettings.Directory);
-            XML.XMLWriteFile(xmlWAMAPNodeNameLocation, ExportKey, WamapSettings.Export.ToString());
-            XML.XMLWriteFile(xmlWAMAPNodeNameLocation, UnderscoreKey, WamapSettings.Underscore.ToString());
+            XML.XMLWriteFile(xmlWAMAPNodeNameLocation, ExportKey, WamapSettings.Export.ToString(CultureInfo.CurrentCulture));
+            XML.XMLWriteFile(xmlWAMAPNodeNameLocation, UnderscoreKey, WamapSettings.Underscore.ToString(CultureInfo.CurrentCulture));
         }
     }
 

@@ -76,7 +76,7 @@ namespace InstructorBriefcaseExtractor.Model
             RawHTML = RawHTML.Replace("<BR>", " ").Replace("<BR/>", " ").Replace("<br>", " ").Replace("<br/>", " ");
             int HTMLStart = RawHTML.IndexOf(JavaStudentListVariable);
             int Count = 0;
-            string temp = "";
+            string temp;
 
             // Class
             // function stuLine( sid, name, enrCredit, gr, opt1, opt2, opt3 )
@@ -166,7 +166,7 @@ namespace InstructorBriefcaseExtractor.Model
             //  function classLn( sid, name, status,  datetime, opt3 )
             HTMLStart = RawHTML.IndexOf(JavaWaitListVariable);
             Count = 0;
-            temp = "";
+            
             if (HTMLStart > 0)
             {
                 do

@@ -6,7 +6,7 @@ namespace InstructorBriefcaseExtractor.BLL
 {
     public class XMLFileVersionConfiguration
     {
-        private UserSettings UserSettings;
+        private readonly UserSettings UserSettings;
 
         public XMLFileVersionConfiguration(UserSettings UserSettings)
         {
