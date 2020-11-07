@@ -19,7 +19,7 @@
     <AssemblyOriginatorKeyFile>IBE_Key.snk</AssemblyOriginatorKeyFile>
     <SignManifests>true</SignManifests>
     <ManifestCertificateThumbprint>E1C3BEF6DA56F9F890B3B53917644FE513C307D9</ManifestCertificateThumbprint>
-    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <GenerateManifests>true</GenerateManifests>
     <StartupObject>InstructorBriefcaseExtractor.Program</StartupObject>
     <ApplicationIcon>IBC.ico</ApplicationIcon>
@@ -32,25 +32,23 @@
     <TargetFrameworkProfile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <PublishUrl>ftp://ftp.jenck.net/</PublishUrl>
+    <PublishUrl>D:\Deploy\IBE\</PublishUrl>
     <Install>true</Install>
-    <InstallFrom>Web</InstallFrom>
-    <UpdateEnabled>true</UpdateEnabled>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
     <UpdateMode>Foreground</UpdateMode>
     <UpdateInterval>7</UpdateInterval>
     <UpdateIntervalUnits>Days</UpdateIntervalUnits>
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>true</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <InstallUrl>https://jenck.net/MySchoolTools/</InstallUrl>
     <ProductName>Instructor Briefcase Extractor</ProductName>
     <PublisherName>My School Tools</PublisherName>
-    <MinimumRequiredVersion>2.5.2.3</MinimumRequiredVersion>
-    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
+    <MinimumRequiredVersion>2.5.3.0</MinimumRequiredVersion>
     <WebPage>index.html</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>4</ApplicationRevision>
-    <ApplicationVersion>2.5.2.%2a</ApplicationVersion>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>2.5.3.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>

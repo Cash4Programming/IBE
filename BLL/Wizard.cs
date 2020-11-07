@@ -598,7 +598,7 @@ namespace InstructorBriefcaseExtractor.BLL
                     }                    
                     break;
                 case WizardStep.Output:
-                    Email_Usage();
+                    //Email_Usage();
 
                     CurrentCompletedStep = WizardStep.CloseProgram;
                     break;
